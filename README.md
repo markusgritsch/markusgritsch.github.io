@@ -1,1 +1,0 @@
-# markusgritsch.github.io
