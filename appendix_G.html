@@ -1,0 +1,212 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><link href="style_edited.css" rel="stylesheet" type="text/css" /><title>Understanding Digital Signal Processing</title>
+<style type="text/css">
+body {
+  -webkit-text-size-adjust: 260%; /* text */
+  zoom: 1.7; /* graphics */
+  font-family: "BookerlyLCD";
+}
+a {
+  color: #005090;
+  text-decoration: none;
+}
+a {font-variant-numeric: oldstyle-nums proportional-nums;}
+p.caption {font-variant-numeric: oldstyle-nums proportional-nums;}
+</style>
+</head><body>
+
+
+<div class="calibre" id="calibre_link-572">
+<p class="calibre3"><a id="calibre_link-2482"></a></p>
+<h2 class="calibre8"><a id="calibre_link-2483" class="calibre5"></a>Contents</h2>
+<p class="toc-appendix"><strong class="calibre9"><a href="#calibre_link-256">G FREQUENCY SAMPLING FILTER DERIVATIONS</a></strong></p>
+<p class="toc-section"><a href="#calibre_link-732">G.1 Frequency Response of a Comb Filter</a></p>
+<p class="toc-section"><a href="#calibre_link-733">G.2 Single Complex FSF Frequency Response</a></p>
+<p class="toc-section"><a href="#calibre_link-734">G.3 Multisection Complex FSF Phase</a></p>
+<p class="toc-section"><a href="#calibre_link-735">G.4 Multisection Complex FSF Frequency Response</a></p>
+<p class="toc-section"><a id="calibre_link-2490"></a><a href="#calibre_link-736">G.5 Real FSF Transfer Function</a></p>
+<p class="toc-section"><a href="#calibre_link-737">G.6 Type-IV FSF Frequency Response</a></p>
+
+</div>
+
+
+<div class="calibre" id="calibre_link-256">
+<p class="calibre3"><a id="calibre_link-297"></a></p>
+<h2 class="calibre8"><a id="calibre_link-2065" class="calibre5"></a>G Frequency Sampling Filter Derivations</h2>
+<p class="calibre3">While much of the algebra related to frequency sampling filters is justifiably omitted in the literature, several derivations are included here for two reasons: first, to validate the equations used in <a href="#calibre_link-97">Section 7.5</a>; and second, to show the various algebraic acrobatics that may be useful in your future digital signal processing analysis efforts.</p>
+<p class="calibre3"><a id="calibre_link-732"></a></p>
+<h3 class="calibre6">G.1 Frequency Response of a Comb Filter</h3>
+<p class="calibre3">The frequency response of a comb filter is <em class="calibre7">H</em><sub class="calibre12">comb</sub>(<em class="calibre7">z</em>) evaluated on the unit circle. We start by substituting <em class="calibre7">e</em><sup class="calibre10"><em class="calibre7">j</em>ω</sup> for <em class="calibre7">z</em> in <em class="calibre7">H</em><sub class="calibre12">comb</sub>(<em class="calibre7">z</em>) from <a href="#calibre_link-257">Eq. (7-37)</a>, because <em class="calibre7">z</em> = <em class="calibre7">e</em><sup class="calibre10"><em class="calibre7">j</em>ω</sup> defines the unit circle, giving</p>
+<p class="caption"><a id="calibre_link-3554"></a>(G-1)</p>
+<p class="image"><img src="images/000777.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Factoring out the half-angled exponential <em class="calibre7">e</em><sup class="calibre10">&ndash;<em class="calibre7">j</em>ω<em class="calibre7">N</em>/2</sup>, we have</p>
+<p class="caption"><a id="calibre_link-3555"></a>(G-2)</p>
+<p class="image"><img src="images/001065.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Using Euler’s identity, 2<em class="calibre7">j</em>sin(α) = <em class="calibre7">e</em><sup class="calibre10"><em class="calibre7">j</em>α</sup> &ndash; <em class="calibre7">e</em><sup class="calibre10">&ndash;<em class="calibre7">j</em>α</sup>, we arrive at</p>
+<p class="caption"><a id="calibre_link-3556"></a>(G-3)</p>
+<p class="image"><img src="images/001686.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Replacing <em class="calibre7">j</em> with <em class="calibre7">e</em><sup class="calibre10"><em class="calibre7">j</em>π/2</sup>, we have</p>
+<p class="caption"><a id="calibre_link-258"></a>(G-4)</p>
+<p class="image"><img src="images/001785.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3"><a id="calibre_link-2286"></a>Determining the maximum magnitude response of a filter is useful in DSP. Ignoring the phase shift term (complex exponential) in <a href="#calibre_link-258">Eq. (G-4)</a>, the frequency-domain magnitude response of a comb filter is</p>
+<p class="caption"><a id="calibre_link-3557"></a>(G-5)</p>
+<p class="image"><img src="images/000253.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">with the maximum magnitude being 2.</p>
+<p class="calibre3"><a id="calibre_link-733"></a></p>
+<h3 class="calibre6">G.2 Single Complex FSF Frequency Response</h3>
+<p class="calibre3">The frequency response of a single-section complex FSF is <em class="calibre7">H</em><sub class="calibre12">ss</sub>(<em class="calibre7">z</em>) evaluated on the unit circle. We start by substituting <em class="calibre7">e</em><sup class="calibre10"><em class="calibre7">j</em>ω</sup> for <em class="calibre7">z</em> in <em class="calibre7">H</em><sub class="calibre12">ss</sub>(<em class="calibre7">z</em>), because <em class="calibre7">z</em> = <em class="calibre7">e</em><sup class="calibre10"><em class="calibre7">j</em>ω</sup> defines the unit circle. Given an <em class="calibre7">H</em><sub class="calibre12">ss</sub>(<em class="calibre7">z</em>) of</p>
+<p class="caption"><a id="calibre_link-3558"></a>(G-6)</p>
+<p class="image"><img src="images/000037.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">we replace the <em class="calibre7">z</em> terms with <em class="calibre7">e</em><sup class="calibre10"><em class="calibre7">jω</em></sup>, giving</p>
+<p class="caption"><a id="calibre_link-3559"></a>(G-7)</p>
+<p class="image"><img src="images/000883.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Factoring out the half-angled exponentials <em class="calibre7">e</em><sup class="calibre10">&ndash;<em class="calibre7">j</em>ω<em class="calibre7">N</em>/2</sup> and <em class="calibre7">e</em><sup class="calibre10">&ndash;<em class="calibre7">j</em>(ω/2 − π<em class="calibre7">k/N</em>)</sup>, we have</p>
+<p class="caption"><a id="calibre_link-3560"></a>(G-8)</p>
+<p class="image"><img src="images/001551.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Using Euler’s identity, 2<em class="calibre7">j</em>sin(α) = <em class="calibre7">e</em><sup class="calibre10"><em class="calibre7">j</em>α</sup> &ndash; <em class="calibre7">e</em><sup class="calibre10">&ndash;<em class="calibre7">j</em>α</sup>, we arrive at</p>
+<p class="caption"><a id="calibre_link-3561"></a>(G-9)</p>
+<p class="image"><img src="images/000767.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Canceling common factors and rearranging terms in preparation for our final form, we have the desired frequency response of a single-section complex FSF:</p>
+<p class="caption"><a id="calibre_link-259"></a>(G-10)</p>
+<p class="image"><img src="images/001632.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Next we derive the maximum amplitude response of a single-section FSF when its pole is on the unit circle and <em class="calibre7">H</em>(<em class="calibre7">k</em>) = 1. Ignoring those phase shift factors (complex exponentials) in <a href="#calibre_link-259">Eq. (G-10)</a>, the amplitude response of a single-section FSF is</p>
+<p class="caption"><a id="calibre_link-3562"></a><a id="calibre_link-260"></a>(G-11)</p>
+<p class="image"><img src="images/000658.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">We want to know the value of <a href="#calibre_link-260">Eq. (G-11)</a> when ω = 2π<em class="calibre7">k/N</em>, because that’s the value of ω at the pole locations, but |<em class="calibre7">H</em><sub class="calibre12">ss</sub>(<em class="calibre7">e</em><sup class="calibre10"><em class="calibre7">j</em>ω</sup>)|<sub class="calibre12">ω=2π<em class="calibre7">k/N</em></sub> is indeterminate as</p>
+<p class="caption"><a id="calibre_link-3563"></a>(G-12)</p>
+<p class="image"><img src="images/001513.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Applying the Marquis de L’Hopital’s Rule to <a href="#calibre_link-260">Eq. (G-11)</a> yields</p>
+<p class="caption"><a id="calibre_link-261"></a>(G-13)</p>
+<p class="image"><img src="images/000549.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">The phase factors in <a href="#calibre_link-259">Eq. (G-10)</a>, when ω = 2π<em class="calibre7">k/N</em>, are</p>
+<p class="caption"><a id="calibre_link-262"></a>(G-14)</p>
+<p class="image"><img src="images/001405.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Combining the result of <a href="#calibre_link-261">Eqs. (G-13)</a> and <a href="#calibre_link-262">(G-14)</a> with <a href="#calibre_link-259">Eq. (G-10)</a>, we have</p>
+<p class="caption"><a id="calibre_link-3564"></a>(G-15)</p>
+<p class="image"><img src="images/000692.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">So the maximum magnitude response of a single-section complex FSF at resonance is |<em class="calibre7">H</em>(<em class="calibre7">k</em>)|<em class="calibre7">N</em>, independent of <em class="calibre7">k</em>.</p>
+<p class="calibre3"><a id="calibre_link-734"></a></p>
+<h3 class="calibre6">G.3 Multisection Complex FSF Phase</h3>
+<p class="calibre3">This appendix shows how the (−1)<em class="calibre7"><sup class="calibre10">k</sup></em> factors arise in <a href="#calibre_link-263">Eq. (7-48)</a> for an even-<em class="calibre7">N</em> multisection linear-phase complex FSF. Substituting the positive-frequency, 0 ≤ <em class="calibre7">k</em> ≤ (<em class="calibre7">N</em>/2)&ndash;1, |<em class="calibre7">H</em>(<em class="calibre7">k</em>)|<em class="calibre7">e</em><sup class="calibre10"><em class="calibre7">j</em>ϕ(<em class="calibre7">k</em>)</sup> gain factors, with ϕ(<em class="calibre7">k</em>) phase values from <a href="#calibre_link-264">Eq. (7-46)</a>, into <a href="#calibre_link-265">Eq. (7-45)</a> gives</p>
+<p class="caption"><a id="calibre_link-266"></a>(G-16)</p>
+<p class="image"><img src="images/001298.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">where the subscript “pf” means positive frequency. Focusing only on the numerator inside the summation in <a href="#calibre_link-266">Eq. (G-16)</a>, it is</p>
+<p class="caption"><a id="calibre_link-3565"></a><a id="calibre_link-3566"></a>(G-17)</p>
+<p class="image"><img src="images/000335.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">showing how the (−1)<em class="calibre7"><sup class="calibre10">k</sup></em> factors occur within the first summation of <a href="#calibre_link-263">Eq. (7-48)</a>. Next we substitute the negative-frequency |<em class="calibre7">H</em>(<em class="calibre7">k</em>)|<em class="calibre7">e</em><sup class="calibre10"><em class="calibre7">j</em>ϕ(<em class="calibre7">k</em>)</sup> gain factors, (<em class="calibre7">N</em>/2)+1 ≤ <em class="calibre7">k</em> ≤ <em class="calibre7">N&ndash;</em>1, with ϕ(<em class="calibre7">k</em>) phase values from <a href="#calibre_link-267">Eq. (7-46″)</a>, into <a href="#calibre_link-265">Eq. (7-45)</a>, giving</p>
+<p class="caption"><a id="calibre_link-268"></a>(G-18)</p>
+<p class="image"><img src="images/001181.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">where the subscript “nf” means negative frequency. Again, looking only at the numerator inside the summation in <a href="#calibre_link-268">Eq. (G-18)</a>, it is</p>
+<p class="caption"><a id="calibre_link-269"></a>(G-19)</p>
+<p class="image"><img src="images/000221.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">That <em class="calibre7">e</em><sup class="calibre10"><em class="calibre7">j</em>π<em class="calibre7">N</em></sup> factor in <a href="#calibre_link-269">Eq. (G-19)</a> is equal to 1 when <em class="calibre7">N</em> is even, so we write</p>
+<p class="caption"><a id="calibre_link-3567"></a>(G-20)</p>
+<p class="image"><img src="images/000118.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">establishing both the negative sign before, and the (−1)<em class="calibre7"><sup class="calibre10">k</sup></em> factor within, the second summation of <a href="#calibre_link-263">Eq. (7-48)</a>. To account for the single-section for the <em class="calibre7">k</em> = <em class="calibre7">N</em>/2 term (this is the Nyquist, or <em class="calibre7">f<sub class="calibre12">s</sub></em>/2, frequency, where ω = π), we plug the |<em class="calibre7">H</em>(<em class="calibre7">N</em>/2)|<em class="calibre7">e</em><sup class="calibre10"><em class="calibre7">j</em>0</sup> gain factor, and <em class="calibre7">k</em> = <em class="calibre7">N</em>/2, into <a href="#calibre_link-270">Eq. (7-43)</a>, giving</p>
+<p class="caption"><a id="calibre_link-3568"></a>(G-21)</p>
+<p class="image"><img src="images/000957.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3"><a id="calibre_link-735"></a></p>
+<h3 class="calibre6">G.4 Multisection Complex FSF Frequency Response</h3>
+<p class="calibre3">The frequency response of a guaranteed-stable complex <em class="calibre7">N-</em>section FSF, when <em class="calibre7">r</em> &lt; 1, is <em class="calibre7">H</em><sub class="calibre12">gs,cplx</sub>(<em class="calibre7">z</em>) with the <em class="calibre7">z</em> variable in <a href="#calibre_link-271">Eq. (7-53)</a> replaced by <em class="calibre7">e</em><sup class="calibre10"><em class="calibre7">j</em>ω</sup>, giving</p>
+<p class="caption"><a id="calibre_link-3569"></a>(G-22)</p>
+<p class="image"><img src="images/001421.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">To temporarily simplify our expressions, we let θ = ω − 2π<em class="calibre7">k/N</em>, giving</p>
+<p class="caption"><a id="calibre_link-3570"></a><a id="calibre_link-3571"></a>(G-23)</p>
+<p class="image"><img src="images/000849.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Factoring out the half-angled exponentials, and accounting for the <em class="calibre7">r</em> factors, we have</p>
+<p class="caption"><a id="calibre_link-3572"></a>(G-24)</p>
+<p class="image"><img src="images/001708.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Converting all the terms inside parentheses to exponentials (we’ll see why in a moment), we have</p>
+<p class="caption"><a id="calibre_link-3573"></a>(G-25)</p>
+<p class="image"><img src="images/000728.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">The algebra gets a little messy here because our exponents have both real and imaginary parts. However, hyperbolic functions to the rescue. Recalling when α is a complex number, sinh(α) = (<em class="calibre7">e</em><sup class="calibre10">α</sup> &ndash; <em class="calibre7">e</em><sup class="calibre10">&ndash;α</sup>)/2, we have</p>
+<p class="caption"><a id="calibre_link-3574"></a>(G-26)</p>
+<p class="image"><img src="images/001584.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Replacing angle θ with ω − 2π<em class="calibre7">k/N</em>, canceling the &ndash;2 factors, we have</p>
+<p class="caption"><a id="calibre_link-3575"></a>(G-27)</p>
+<p class="image"><img src="images/000612.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Rearranging and combining terms, we conclude with</p>
+<p class="caption"><a id="calibre_link-3576"></a>(G-28)</p>
+<p class="image"><img src="images/001471.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">(Whew! Now we see why this frequency response expression is not usually found in the literature.)</p>
+<p class="calibre3"><a id="calibre_link-736"></a></p>
+<h3 class="calibre6"><a id="calibre_link-2290" class="calibre5"></a>G.5 Real FSF Transfer Function</h3>
+<p class="calibre3">The transfer function equation for the real-valued multisection FSF looks a bit strange at first glance, so rather than leaving its derivation as an exercise for the reader, we show the algebraic acrobatics necessary in its development. To preview our approach, we’ll start with the transfer function of a multisection complex FSF and define the <em class="calibre7">H</em>(<em class="calibre7">k</em>) gain factors such that all filter poles are in conjugate pairs. This will lead us to real-FSF structures with real-valued coefficients. With that said, we begin with <a href="#calibre_link-271">Eq. (7-53)</a>’s transfer function of a guaranteed-stable <em class="calibre7">N-</em>section complex FSF of</p>
+<p class="caption"><a id="calibre_link-272"></a>(G-29)</p>
+<p class="image"><img src="images/000507.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Assuming <em class="calibre7">N</em> is even, and breaking <a href="#calibre_link-272">Eq. (G-29)</a>’s summation into parts, we can write</p>
+<p class="caption"><a id="calibre_link-275"></a>(G-30)</p>
+<p class="image"><img src="images/000406.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">The first two ratios inside the brackets account for the <em class="calibre7">k</em> = 0 and <em class="calibre7">k</em> = <em class="calibre7">N</em>/2 frequency samples. The first summation is associated with the positive-frequency range, which is the upper half of the <em class="calibre7">z</em>-plane’s unit circle. The second summation is associated with the negative-frequency range, the lower half of the unit circle.</p>
+<p class="calibre3">To reduce the clutter of our derivation, let’s identify the two summations as</p>
+<p class="caption"><a id="calibre_link-3577"></a>(G-31)</p>
+<p class="image"><img src="images/001116.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">We then combine the summations by changing the indexing of the second summation as</p>
+<p class="caption"><a id="calibre_link-3578"></a>(G-32)</p>
+<p class="image"><img src="images/000295.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Putting those ratios over a common denominator and multiplying the denominator factors, and then forcing the <em class="calibre7">H</em>(<em class="calibre7">N&ndash;k</em>) gain factors to be complex conjugates of the <em class="calibre7">H</em>(<em class="calibre7">k</em>) gain factors, we write</p>
+<p class="caption"><a id="calibre_link-3579"></a><a id="calibre_link-273"></a>(G-33)</p>
+<p class="image"><img src="images/001136.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">where the “*” symbol means conjugation. Defining <em class="calibre7">H</em>(<em class="calibre7">N-k</em>) = <em class="calibre7">H</em>*(<em class="calibre7">k</em>) mandates that all poles will be conjugate pairs and, as we’ll see, this condition converts our complex FSF into a real FSF with real-valued coefficients. Plowing forward, because <em class="calibre7">e</em><sup class="calibre10"><em class="calibre7">j</em>2π[<em class="calibre7">N&ndash;k</em>]/<em class="calibre7">N</em></sup> = <em class="calibre7">e</em><sup class="calibre10">&ndash;<em class="calibre7">j</em>2π<em class="calibre7">N</em>/<em class="calibre7">N</em></sup><em class="calibre7">e</em><sup class="calibre10">&ndash;<em class="calibre7">j</em>2π<em class="calibre7">k/N</em></sup> = <em class="calibre7">e</em><sup class="calibre10">&ndash;<em class="calibre7">j</em>2π<em class="calibre7">k/N</em></sup>, we make that substitution in <a href="#calibre_link-273">Eq. (G-33)</a>, rearrange the numerator, and combine the factors of <em class="calibre7">z</em><sup class="calibre10">-1</sup> in the denominator to arrive at</p>
+<p class="caption"><a id="calibre_link-3580"></a>(G-34)</p>
+<p class="image"><img src="images/000184.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Next we define each complex <em class="calibre7">H</em>(<em class="calibre7">k</em>) in rectangular form with an angle ϕ<em class="calibre7"><sub class="calibre12">k</sub></em>, or <em class="calibre7">H</em>(<em class="calibre7">k</em>) = |<em class="calibre7">H</em>(<em class="calibre7">k</em>)|[cos(ϕ<em class="calibre7"><sub class="calibre12">k</sub></em>) +<em class="calibre7">j</em>sin(ϕ<em class="calibre7"><sub class="calibre12">k</sub></em>)], and <em class="calibre7">H</em>*(<em class="calibre7">k</em>) = |<em class="calibre7">H</em>(<em class="calibre7">k</em>)|[cos(ϕ<em class="calibre7"><sub class="calibre12">k</sub></em>) &ndash;<em class="calibre7">j</em>sin(ϕ<em class="calibre7"><sub class="calibre12">k</sub></em>)]. Realizing that the imaginary parts of the sum cancel so that <em class="calibre7">H</em>(<em class="calibre7">k</em>) + <em class="calibre7">H</em>*(<em class="calibre7">k</em>) = 2|<em class="calibre7">H</em>(<em class="calibre7">k</em>)|cos(ϕ<em class="calibre7"><sub class="calibre12">k</sub></em>) allows us to write</p>
+<p class="caption"><a id="calibre_link-3581"></a>(G-35)</p>
+<p class="image"><img src="images/000927.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Recalling Euler’s identity, 2cos(α) = <em class="calibre7">e</em><sup class="calibre10"><em class="calibre7">j</em>α</sup> + <em class="calibre7">e</em><sup class="calibre10">&ndash;<em class="calibre7">j</em>α</sup>, and combining the |<em class="calibre7">H</em>(<em class="calibre7">k</em>)| factors leads to the final form of our summation:</p>
+<p class="caption"><a id="calibre_link-274"></a>(G-36)</p>
+<p class="image"><img src="images/000187.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Substituting <a href="#calibre_link-274">Eq. (G-36)</a> for the two summations in <a href="#calibre_link-275">Eq. (G-30)</a>, we conclude with the desired transfer function</p>
+<p class="caption"><a id="calibre_link-3582"></a>(G-37)</p>
+<p class="image"><img src="images/001027.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">where the subscript “real” means a real-valued multisection FSF.</p>
+<p class="calibre3"><a id="calibre_link-737"></a></p>
+<h3 class="calibre6"><a id="calibre_link-2459" class="calibre5"></a>G.6 Type-IV FSF Frequency Response</h3>
+<p class="calibre3">The frequency response of a single-section even-<em class="calibre7">N</em> Type-IV FSF is its transfer function evaluated on the unit circle. To begin that evaluation, we set <a href="#calibre_link-276">Eq. (7-58)</a>’s |<em class="calibre7">H</em>(<em class="calibre7">k</em>)| = 1, and denote a Type-IV FSF’s single-section transfer function as</p>
+<p class="caption"><a id="calibre_link-3583"></a>(G-38)</p>
+<p class="image"><img src="images/000079.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">where the “ss” subscript means single-section. Under the assumption that the damping factor <em class="calibre7">r</em> is so close to unity that it can be replaced with 1, we have the simplified FSF transfer function</p>
+<p class="caption"><a id="calibre_link-3584"></a>(G-39)</p>
+<p class="image"><img src="images/000922.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Letting ω<em class="calibre7"><sub class="calibre12">r</sub></em> = 2π<em class="calibre7">k/N</em> to simplify the notation and factoring <em class="calibre7">H</em><sub class="calibre12">Type-IV,ss</sub>(<em class="calibre7">z</em>)’s denominator gives</p>
+<p class="caption"><a id="calibre_link-3585"></a>(G-40)</p>
+<p class="image"><img src="images/000809.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">in which we replace each <em class="calibre7">z</em> term with <em class="calibre7">e</em><sup class="calibre10"><em class="calibre7">j</em>ω</sup>, as</p>
+<p class="caption"><a id="calibre_link-3586"></a>(G-41)</p>
+<p class="image"><img src="images/001667.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Factoring out the half-angled exponentials, we have</p>
+<p class="caption"><a id="calibre_link-3587"></a>(G-42)</p>
+<p class="image"><img src="images/000689.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Using Euler’s identity, 2<em class="calibre7">j</em>sin(α) = <em class="calibre7">e</em><sup class="calibre10"><em class="calibre7">j</em>α</sup> &ndash; <em class="calibre7">e</em><sup class="calibre10">&ndash;<em class="calibre7">j</em>α</sup>, we obtain</p>
+<p class="caption"><a id="calibre_link-3588"></a>(G-43)</p>
+<p class="image"><img src="images/001550.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Canceling common factors, and adding like terms, we have</p>
+<p class="caption"><a id="calibre_link-3589"></a><a id="calibre_link-3590"></a>(G-44)</p>
+<p class="image"><img src="images/000576.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Plugging 2π<em class="calibre7">k/N</em> back in for ω<em class="calibre7"><sub class="calibre12">r</sub></em>, the single-section frequency response is</p>
+<p class="caption"><a id="calibre_link-277"></a>(G-45)</p>
+<p class="image"><img src="images/001435.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Based on <a href="#calibre_link-277">Eq. (G-45)</a>, the frequency response of a multisection even-<em class="calibre7">N</em> Type-IV FSF is</p>
+<p class="caption"><a id="calibre_link-3591"></a>(G-46)</p>
+<p class="image"><img src="images/001268.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">To determine the amplitude response of a single section, we ignore the phase shift terms (complex exponentials) in <a href="#calibre_link-277">Eq. (G-45)</a> to yield</p>
+<p class="caption"><a id="calibre_link-278"></a>(G-47)</p>
+<p class="image"><img src="images/001332.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">To find the maximum amplitude response at resonance we evaluate <a href="#calibre_link-278">Eq. (G-47)</a> when ω = 2π<em class="calibre7">k/N</em>, because that’s the value of ω at the FSF’s pole locations. However, that ω causes the denominator to go to zero, causing the ratio to go to infinity. We move on with one application of L’Hopital’s Rule to <a href="#calibre_link-278">Eq. (G-47)</a> to obtain</p>
+<p class="caption"><a id="calibre_link-3592"></a>(G-48)</p>
+<p class="image"><img src="images/000368.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Eliminating the π<em class="calibre7">k</em> terms by using trigonometric reduction formulas sin(π<em class="calibre7">k</em>&ndash;α) = (−1)<em class="calibre7"><sup class="calibre10">k</sup></em>[-sin(α)] and sin(π<em class="calibre7">k</em>+α) = (−1)<em class="calibre7"><sup class="calibre10">k</sup></em>[sin(α)], we have a maximum amplitude response of</p>
+<p class="caption"><a id="calibre_link-3593"></a><a id="calibre_link-279"></a>(G-49)</p>
+<p class="image"><img src="images/001214.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3"><a href="#calibre_link-279">Equation (G-49)</a> is only valid for 1 ≤ <em class="calibre7">k</em> ≤ (<em class="calibre7">N</em>/2)&ndash;1. Disregarding the (−1)<em class="calibre7"><sup class="calibre10">k</sup></em> factors, we have a magnitude response at resonance, as a function of <em class="calibre7">k</em>, of</p>
+<p class="caption"><a id="calibre_link-3594"></a>(G-50)</p>
+<p class="image"><img src="images/001094.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">To find the resonant gain at 0 Hz (DC) we set <em class="calibre7">k</em> = 0 in <a href="#calibre_link-278">Eq. (G-47)</a>, apply L’Hopital’s Rule (the derivative with respect to ω) twice, and set ω = 0, giving</p>
+<p class="caption"><a id="calibre_link-3595"></a>(G-51)</p>
+<p class="image"><img src="images/000150.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">To obtain the resonant gain at <em class="calibre7">f<sub class="calibre12">s</sub></em>/2 Hz we set <em class="calibre7">k</em> = <em class="calibre7">N</em>/2 in <a href="#calibre_link-278">Eq. (G-47)</a>, again apply L’Hopital’s Rule twice, and set ω = π, yielding</p>
+<p class="caption"><a id="calibre_link-3596"></a>(G-52)</p>
+<p class="image"><img src="images/000987.jpg" alt="image" class="calibre2" /></p>
+</div>
+
+
+</body></html>

@@ -1,0 +1,76 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><link href="style_edited.css" rel="stylesheet" type="text/css" /><title>Understanding Digital Signal Processing</title>
+<style type="text/css">
+body {
+  -webkit-text-size-adjust: 260%; /* text */
+  zoom: 1.7; /* graphics */
+  font-family: "BookerlyLCD";
+}
+a {
+  color: #005090;
+  text-decoration: none;
+}
+a {font-variant-numeric: oldstyle-nums proportional-nums;}
+p.caption {font-variant-numeric: oldstyle-nums proportional-nums;}
+</style>
+</head><body>
+
+
+<div class="calibre" id="calibre_link-572">
+<p class="calibre3"><a id="calibre_link-2482"></a></p>
+<h2 class="calibre8"><a id="calibre_link-2483" class="calibre5"></a>Contents</h2>
+<p class="toc-appendix"><strong class="calibre9"><a href="#calibre_link-104">C TIME REVERSAL AND THE DFT</a></strong></p>
+
+</div>
+
+
+<div class="calibre" id="calibre_link-104">
+<p class="calibre3"><a id="calibre_link-295"></a></p>
+<h2 class="calibre8"><a id="calibre_link-2139" class="calibre5"></a>C Time Reversal and the DFT</h2>
+<p class="calibre3">The notion of time reversal in discrete systems occasionally arises in the study of the discrete Fourier transform (DFT), the mathematical analysis of digital filters, and even in practice (straight time reversal is used in a digital filtering scheme described in <a href="#calibre_link-105">Section 13.12</a>). We give the topic of time reversal some deserved attention here because it illustrates one of the truly profound differences between the worlds of continuous and discrete systems. In addition, the spectral effects of reversing a time sequence are (in my opinion) not obvious and warrant investigation.</p>
+<p class="calibre3">Actually, in discrete-time systems there are two forms of time reversal we need to think about. Consider the 6-point <em class="calibre7">x</em>(<em class="calibre7">n</em>) time-domain sequence</p>
+<p class="caption"><a id="calibre_link-110"></a>(C-1)</p>
+<p class="image"><img src="images/001772.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Due to the periodicity properties of discrete sampled representations (discussed in Section 3.17), we can depict the <em class="calibre7">x</em>(<em class="calibre7">n</em>) time sequence as samples on a circle as shown in <a href="#calibre_link-106">Figure C-1(a)</a>. There we arbitrarily assign positive time flow as counterclockwise rotation. (For our UK friends, counterclockwise means your <em class="calibre7">anticlockwise</em>.)</p>
+<p class="caption"><a id="calibre_link-106"></a><strong class="calibre9">Figure C-1</strong> Circular representations of periodic sequences: (a) original <em class="calibre7">x</em>(<em class="calibre7">n</em>) sequence; (b) circular time reversal of <em class="calibre7">x</em>(<em class="calibre7">n</em>).</p>
+<p class="image"><img src="images/001535.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Time reversal, as defined here for sequences that are treated as periodic, means traveling clockwise around the circle (in the negative time direction), creating a new time sequence</p>
+<p class="caption"><a id="calibre_link-3486"></a>(C-2)</p>
+<p class="image"><img src="images/000766.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">We call <em class="calibre7">x</em><sub class="calibre12">c</sub>(<em class="calibre7">n</em>) the circular time reversal of <em class="calibre7">x</em>(<em class="calibre7">n</em>), where the subscript “c” means <em class="calibre7">circular</em> reversal, and depict <em class="calibre7">x</em><sub class="calibre12">c</sub>(<em class="calibre7">n</em>) as in <a href="#calibre_link-106">Figure C-1(b)</a>.</p>
+<p class="calibre3"><a id="calibre_link-3487"></a>The interesting issue here is that for real <em class="calibre7">N</em>-point time sequences, the DFT of <em class="calibre7">x</em><sub class="calibre12">c</sub>(<em class="calibre7">n</em>) is the complex conjugate of the DFT of <em class="calibre7">x</em>(<em class="calibre7">n</em>). That is,</p>
+<p class="caption"><a id="calibre_link-107"></a>(C-3)</p>
+<p class="image"><img src="images/001202.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">where the DFT index is 0 ≤ <em class="calibre7">m</em> ≤ <em class="calibre7">N</em>&ndash;1. Due to the conjugate symmetry of DFTs of real sequences, we should realize that <em class="calibre7">X</em>*(<em class="calibre7">m</em>) is a straight reversal of the <em class="calibre7">X</em>(<em class="calibre7">m</em>) samples.</p>
+<p class="calibre3">Let’s illustrate <a href="#calibre_link-107">Eq. (C-3)</a> with an example. With <em class="calibre7">X</em>(<em class="calibre7">m</em>) representing the DFT of <em class="calibre7">x</em>(<em class="calibre7">n</em>), we can write down <em class="calibre7">X</em>(<em class="calibre7">m</em>)’s <em class="calibre7">m</em> = 4 sample <em class="calibre7">X</em>(4) as</p>
+<p class="caption"><a id="calibre_link-108"></a>(C-4)</p>
+<p class="image"><img src="images/000619.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Because <em class="calibre7">e</em><sup class="calibre10">&ndash;<em class="calibre7">j</em>2πk/6</sup> has a period of 6, we can write <a href="#calibre_link-108">Eq. (C-4)</a> as</p>
+<p class="caption"><a id="calibre_link-109"></a>(C-5)</p>
+<p class="image"><img src="images/001498.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Next, let’s write down the (circular-reversed) <em class="calibre7">X</em><sub class="calibre12">c</sub>(<em class="calibre7">m</em>)’s <em class="calibre7">m</em> = 4-sample <em class="calibre7">X</em><sub class="calibre12">c</sub>(4) as</p>
+<p class="caption"><a id="calibre_link-3488"></a>(C-6)</p>
+<p class="image"><img src="images/001275.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">or</p>
+<p class="caption"><a id="calibre_link-3489"></a>(C-7)</p>
+<p class="image"><img src="images/001701.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Replacing <em class="calibre7">X</em><sub class="calibre12">c</sub>(4)’s negative angles with their positive-angle equivalents yields</p>
+<p class="caption"><a id="calibre_link-3490"></a>(C-8)</p>
+<p class="image"><img src="images/000435.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3"><a id="calibre_link-3491"></a>which is the conjugate of <a href="#calibre_link-109">Eq. (C-5)</a>, demonstrating that <em class="calibre7">X</em>(<em class="calibre7">m</em>) and <em class="calibre7">X</em><sub class="calibre12">c</sub>(<em class="calibre7">m</em>) are complex conjugates.</p>
+<p class="calibre3">An alternate time reversal concept, which we’ll call <em class="calibre7">straight</em> time reversal, is the simple reversal of <a href="#calibre_link-110">Eq. (C-1)</a>’s <em class="calibre7">x</em>(<em class="calibre7">n</em>), yielding an <em class="calibre7">x</em><sub class="calibre12">s</sub>(<em class="calibre7">n</em>) sequence</p>
+<p class="caption"><a id="calibre_link-3492"></a>(C-9)</p>
+<p class="image"><img src="images/001355.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">where the subscript “s” means <em class="calibre7">straight</em> reversal. For real <em class="calibre7">N</em>-point time sequences, the DFT of <em class="calibre7">x</em><sub class="calibre12">s</sub>(<em class="calibre7">n</em>) is</p>
+<p class="caption"><a id="calibre_link-111"></a>(C-10)</p>
+<p class="image"><img src="images/000324.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">We can demonstrate <a href="#calibre_link-111">Eq. (C-10)</a> the same way we did <a href="#calibre_link-107">Eq. (C-3)</a>, but consider <a href="#calibre_link-112">Figure C-2</a>. There we show the samples of repeated revolutions around the <em class="calibre7">x</em><sub class="calibre12">c</sub>(<em class="calibre7">n</em>) circle in <a href="#calibre_link-106">Figure C-1(b)</a>, indicating both the 6-point <em class="calibre7">x</em><sub class="calibre12">s</sub>(<em class="calibre7">n</em>) and the 6-point <em class="calibre7">x</em><sub class="calibre12">c</sub>(<em class="calibre7">n</em>) sequences. Notice how <em class="calibre7">x</em><sub class="calibre12">s</sub>(<em class="calibre7">n</em>) is shifted backward in time by five samples from <em class="calibre7">x</em><sub class="calibre12">c</sub>(<em class="calibre7">n</em>).</p>
+<p class="caption"><a id="calibre_link-112"></a><strong class="calibre9">Figure C-2</strong> Periodic sequences <em class="calibre7">x</em><sub class="calibre12">s</sub>(<em class="calibre7">n</em>) and <em class="calibre7">x</em><sub class="calibre12">c</sub>(<em class="calibre7">n</em>).</p>
+<p class="image"><img src="images/000562.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Using the principle of the DFT’s shifting theorem from <a href="#calibre_link-113">Section 3.6</a>, we know that <em class="calibre7">X</em><sub class="calibre12">s</sub>(<em class="calibre7">m</em>) is equal to <em class="calibre7">X</em><sub class="calibre12">c</sub>(<em class="calibre7">m</em>) times a linear phase shift of <em class="calibre7">e</em><sup class="calibre10">&ndash;<em class="calibre7">j</em>2π<em class="calibre7">m</em>(5)/6</sup> for our <em class="calibre7">N</em> = 6 example. So, in the general <em class="calibre7">N</em>-point sequence case,</p>
+<p class="caption"><a id="calibre_link-3493"></a>(C-11)</p>
+<p class="image"><img src="images/000074.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">which validates <a href="#calibre_link-111">Eq. (C-10)</a>.</p>
+</div>
+
+
+</body></html>

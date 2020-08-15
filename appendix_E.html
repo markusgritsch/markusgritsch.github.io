@@ -1,0 +1,91 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><link href="style_edited.css" rel="stylesheet" type="text/css" /><title>Understanding Digital Signal Processing</title>
+<style type="text/css">
+body {
+  -webkit-text-size-adjust: 260%; /* text */
+  zoom: 1.7; /* graphics */
+  font-family: "BookerlyLCD";
+}
+a {
+  color: #005090;
+  text-decoration: none;
+}
+a {font-variant-numeric: oldstyle-nums proportional-nums;}
+p.caption {font-variant-numeric: oldstyle-nums proportional-nums;}
+</style>
+</head><body>
+
+
+<div class="calibre" id="calibre_link-572">
+<p class="calibre3"><a id="calibre_link-2482"></a></p>
+<h2 class="calibre8"><a id="calibre_link-2483" class="calibre5"></a>Contents</h2>
+<p class="toc-appendix"><strong class="calibre9"><a href="#calibre_link-434">E DECIBELS (DB AND DBM)</a></strong></p>
+<p class="toc-section"><a href="#calibre_link-729">E.1 Using Logarithms to Determine Relative Signal Power</a></p>
+<p class="toc-section"><a href="#calibre_link-730">E.2 Some Useful Decibel Numbers</a></p>
+<p class="toc-section"><a href="#calibre_link-731">E.3 Absolute Power Using Decibels</a></p>
+
+</div>
+
+
+<div class="calibre" id="calibre_link-434">
+<p class="calibre3"><a id="calibre_link-296"></a></p>
+<h2 class="calibre8"><a id="calibre_link-2006" class="calibre5"></a>E Decibels (dB and dBm)</h2>
+<p class="calibre3">This appendix introduces the logarithmic function used to improve the magnitude resolution of frequency-domain plots when we evaluate signal spectra, digital filter magnitude responses, and window function magnitude responses. When we use a logarithmic function to plot signal levels in the frequency domain, the vertical axis unit of measure is <em class="calibre7"><a href="#calibre_link-435">decibels</a></em>.</p>
+<p class="calibre3"><a id="calibre_link-729"></a></p>
+<h3 class="calibre6">E.1 Using Logarithms to Determine Relative Signal Power</h3>
+<p class="calibre3">In discussing decibels, it’s interesting to see how this unit of measure evolved. When comparing continuous (analog) signal levels, early specialists in electronic communications found it useful to define a measure of the difference in powers of two signals. If that difference was treated as the logarithm of a ratio of powers, it could be used as a simple additive measure to determine the overall gain or loss of cascaded electronic circuits. The positive logarithms associated with system components having gain could be added to the negative logarithms of those components having loss quickly to determine the overall gain or loss of the system. With this in mind, the difference between two signal power levels (<em class="calibre7">P</em><sub class="calibre12">1</sub> and <em class="calibre7">P</em><sub class="calibre12">2</sub>), measured in bels, was defined as the base 10 logarithm of the ratio of those powers, or</p>
+<p class="caption"><a id="calibre_link-436"></a>(E-1)</p>
+<p class="image"><img src="images/000540.jpg" alt="image" class="calibre2" /></p>
+<p class="footnotes"><a id="calibre_link-3513"></a><sup class="calibre11">†</sup> The dimensionless unit of measure <em class="calibre7">bel</em> was named in honor of Alexander Graham Bell.</p>
+<p class="calibre3"><a id="calibre_link-2098"></a>The use of <a href="#calibre_link-436">Eq. (E-1)</a> led to another evolutionary step because the unit of bel was soon found to be inconveniently small. For example, it was discovered that the human ear could detect audio power level differences of one-tenth of a bel. Measured power differences smaller than one bel were so common that it led to the use of the decibel (bel/10), effectively making the unit of bel obsolete. The decibel (dB), then, is a unit of measure of the relative power difference of two signals defined as</p>
+<p class="caption"><a id="calibre_link-438"></a>(E-2)</p>
+<p class="image"><img src="images/001508.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">The logarithmic function 10·log<sub class="calibre12">10</sub>(<em class="calibre7">P</em><sub class="calibre12">1</sub>/<em class="calibre7">P</em><sub class="calibre12">2</sub>), plotted in <a href="#calibre_link-437">Figure E-1</a>, doesn’t seem too beneficial at first glance, but its application turns out to be very useful. Notice the large change in the function’s value when the power ratio (<em class="calibre7">P</em><sub class="calibre12">1</sub>/<em class="calibre7">P</em><sub class="calibre12">2</sub>) is small, and the gradual change when the ratio is large. The effect of this nonlinearity is to provide greater resolution when the ratio <em class="calibre7">P</em><sub class="calibre12">1</sub>/<em class="calibre7">P</em><sub class="calibre12">2</sub> is small, giving us a good way to recognize very small differences in the power levels of signal spectra, digital filter responses, and window function frequency responses.</p>
+<p class="caption"><a id="calibre_link-437"></a><strong class="calibre9">Figure E-1</strong> Logarithmic decibel function of <a href="#calibre_link-438">Eq. (E-2)</a>.</p>
+<p class="image"><img src="images/001512.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Let’s demonstrate the utility of the logarithmic function’s variable resolution. First, remember that the power of any frequency-domain sequence representing signal magnitude |<em class="calibre7">X</em>(<em class="calibre7">m</em>)| is proportional to |<em class="calibre7">X</em>(<em class="calibre7">m</em>)| squared. For convenience, the proportionality constant is assumed to be one, so we say the power of |<em class="calibre7">X</em>(<em class="calibre7">m</em>)| is</p>
+<p class="caption"><a id="calibre_link-439"></a>(E-3)</p>
+<p class="image"><img src="images/000542.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3"><a id="calibre_link-3514"></a>Although <a href="#calibre_link-439">Eq. (E-3)</a> may not actually represent power (in watts) in the classical sense, it’s the squaring operation that’s important here, because it’s analogous to the traditional magnitude squaring operation used to determine the power of continuous signals. (Of course, if <em class="calibre7">X</em>(<em class="calibre7">m</em>) is complex, we can calculate the power spectrum sequence using |<em class="calibre7">X</em>(<em class="calibre7">m</em>)|<sup class="calibre10">2</sup> = <em class="calibre7">X</em><sub class="calibre12">real</sub>(<em class="calibre7">m</em>)<sup class="calibre10">2</sup> + <em class="calibre7">X</em><sub class="calibre12">imag</sub>(<em class="calibre7">m</em>)<sup class="calibre10">2</sup>.) Taking ten times the log of <a href="#calibre_link-439">Eq. (E-3)</a> allows us to express a power spectrum sequence <em class="calibre7">X</em><sub class="calibre12">dB</sub>(<em class="calibre7">m</em>) in dB as</p>
+<p class="caption"><a id="calibre_link-440"></a>(E-4)</p>
+<p class="image"><img src="images/001399.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Because log(<em class="calibre7">x</em><sup class="calibre10">2</sup>) = log(<em class="calibre7">x</em>) + log(<em class="calibre7">x</em>) = 2log(<em class="calibre7">x</em>), we can eliminate the squaring operation in <a href="#calibre_link-440">Eq. (E-4)</a> by doubling the factor of ten and represent the power spectrum sequence by the expression</p>
+<p class="caption"><a id="calibre_link-441"></a>(E-5)</p>
+<p class="image"><img src="images/000440.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Without the need for the squaring operation, <a href="#calibre_link-441">Eq. (E-5)</a> is a more convenient way than <a href="#calibre_link-440">Eq. (E-4)</a> to calculate the <em class="calibre7">X</em><sub class="calibre12">dB</sub>(<em class="calibre7">m</em>) power spectrum sequence from the <em class="calibre7">X</em>(<em class="calibre7">m</em>) sequence.</p>
+<p class="calibre3"><a href="#calibre_link-440">Equations (E-4)</a> and <a href="#calibre_link-441">(E-5)</a>, then, are the expressions used to convert a linear magnitude axis to a logarithmic magnitude-squared, or power, axis measured in dB. What we most often see in the literature are normalized log magnitude spectral plots where each value of |<em class="calibre7">X</em>(<em class="calibre7">m</em>)|<sup class="calibre10">2</sup> is divided by the first |<em class="calibre7">X</em>(0)|<sup class="calibre10">2</sup> power value (for <em class="calibre7">m</em> = 0), as</p>
+<p class="caption"><a id="calibre_link-444"></a>(E-6)</p>
+<p class="image"><img src="images/001291.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3"><a id="calibre_link-3515"></a>The division by the |<em class="calibre7">X</em>(0)|<sup class="calibre10">2</sup> or |<em class="calibre7">X</em>(0)| value always forces the first value in the normalized log magnitude sequence <em class="calibre7">X</em><sub class="calibre12">dB</sub>(<em class="calibre7">m</em>) equal to 0 dB.<sup class="calibre10"><a id="calibre_link-445"></a><a href="#calibre_link-442">†</a></sup> This makes it easy for us to compare multiple log magnitude spectral plots. To illustrate, let’s look at the frequency-domain representations of the Hanning and triangular window functions. The magnitudes of those frequency-domain functions are plotted on a linear scale in <a href="#calibre_link-443">Figure E-2(a)</a> where we’ve arbitrarily assigned their peak values to be 2. Comparing the two linear scale magnitude sequences, <em class="calibre7">W</em><sub class="calibre12">Hanning</sub>(<em class="calibre7">m</em>) and <em class="calibre7">W</em><sub class="calibre12">triangular</sub>(<em class="calibre7">m</em>), we can see some minor differences between their magnitude values. If we’re interested in the power associated with the two window functions, we square the two magnitude functions and plot them on a linear scale as in <a href="#calibre_link-443">Figure E-2(b)</a>. The difference between the two window functions’ power sequences is impossible to see above the frequency of, say, <em class="calibre7">m</em> = 8 in <a href="#calibre_link-443">Figure E-2(b)</a>. Here’s where the dB scale helps us out. If we plot the normalized log magnitude versions of the two magnitude-squared <a id="calibre_link-2106"></a>sequences on a logarithmic dB scale using <a href="#calibre_link-444">Eq. (E-6)</a>, the difference between the two functions will become obvious.</p>
+<p class="footnotes"><a id="calibre_link-442"></a><sup class="calibre11"><a href="#calibre_link-445">†</a></sup> That’s because log<sub class="calibre14">10</sub>(|<em class="calibre7">X</em>(0)|/|<em class="calibre7">X</em>(0)|) = log<sub class="calibre14">10</sub>(1) = 0.</p>
+<p class="caption"><a id="calibre_link-443"></a><strong class="calibre9">Figure E-2</strong> Hanning (white squares) and triangular (black squares) window functions in the frequency domain: (a) magnitude responses using a linear scale; (b) magnitude-squared responses using a linear scale; (c) log magnitude responses using a normalized dB scale.</p>
+<p class="image"><img src="images/000548.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Normalization, in the case of the Hanning window, amounts to calculating the log magnitude sequence normalized over |<em class="calibre7">W</em><sub class="calibre12">Hanning</sub>(0)| as</p>
+<p class="caption"><a id="calibre_link-3516"></a>(E-7)</p>
+<p class="image"><img src="images/000329.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">The normalized log magnitude sequences are plotted in <a href="#calibre_link-443">Figure E-2(c)</a>. We can now clearly see the difference in the magnitude-squared window functions in <a href="#calibre_link-443">Figure E-2(c)</a> as compared to the linear plots in <a href="#calibre_link-443">Figure E-2(b)</a>. Notice how normalization forced the peak values for both log magnitude functions in <a href="#calibre_link-443">Figure E-2(c)</a> to be zero dB. (The dots in <a href="#calibre_link-443">Figure E-2</a> are connected by lines to emphasize the sidelobe features of the two log magnitude sequences.)</p>
+<p class="calibre3">Although we’ve shown the utility of dB plots using window function frequency responses as examples, the dB scale is equally useful when we’re plotting signal-power spectra or digital filter frequency responses. We can further demonstrate the dB scale using a simple digital filter example. Let’s say we’re designing an 11-tap highpass FIR filter whose coefficients are shown in <a href="#calibre_link-446">Figure E-3(a)</a>. If the center coefficient <em class="calibre7">h</em>(5) is &ndash;0.48, the filter’s frequency magnitude response |<em class="calibre7">H</em><sub class="calibre12">&ndash;0.48</sub>(<em class="calibre7">m</em>)| can be plotted as the white dots on the linear scale in <a href="#calibre_link-446">Figure E-3(b)</a>. Should we change <em class="calibre7">h</em>(5) from &ndash;0.48 to &ndash;0.5, the new frequency magnitude response |<em class="calibre7">H</em><sub class="calibre12">&ndash;0.5</sub>(<em class="calibre7">m</em>)| would be the black dots in <a href="#calibre_link-446">Figure E-3(b)</a>. It’s difficult to see much of a difference between |<em class="calibre7">H</em><sub class="calibre12">&ndash;0.48</sub>(<em class="calibre7">m</em>)| and |<em class="calibre7">H</em><sub class="calibre12">&ndash;0.5</sub>(<em class="calibre7">m</em>)| on a linear scale. If we used <a href="#calibre_link-444">Eq. (E-6)</a> to calculate two normalized log magnitude sequences, they could be plotted as shown in <a href="#calibre_link-446">Figure E-3(c)</a>, where the filter sidelobe effects of changing <em class="calibre7">h</em>(5) from &ndash;0.48 to &ndash;0.5 are now easy to see.</p>
+<p class="caption"><a id="calibre_link-3517"></a><a id="calibre_link-446"></a><strong class="calibre9">Figure E-3</strong> FIR filter magnitude responses: (a) FIR filter time-domain coefficients; (b) magnitude responses using a linear scale; (c) log magnitude responses using the dB scale.</p>
+<p class="image"><img src="images/001403.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3"><a id="calibre_link-730"></a></p>
+<h3 class="calibre6">E.2 Some Useful Decibel Numbers</h3>
+<p class="calibre3">If the reader uses dB scales on a regular basis, there are a few constants worth committing to memory. A power difference of 3 dB corresponds to a power factor of two; that is, if the magnitude-squared ratio of two different frequency components is 2, then from <a href="#calibre_link-438">Eq. (E-2)</a>,</p>
+<p class="caption"><a id="calibre_link-3518"></a>(E-8)</p>
+<p class="image"><img src="images/001173.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Likewise, if the magnitude-squared ratio of two different frequency components is 1/2, then the relative power difference is &ndash;3 dB because</p>
+<p class="caption"><a id="calibre_link-2405"></a><a id="calibre_link-3519"></a>(E-9)</p>
+<p class="image"><img src="images/000214.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3"><a href="#calibre_link-447">Table E-1</a> lists several magnitude and power ratios versus dB values that are worth remembering. Keep in mind that decibels indicate only relative power relationships. For example, if we’re told that signal A is 6 dB above signal B, we know that the power of signal A is four times that of signal B, and that the magnitude of signal A is twice the magnitude of signal B. We may not know the absolute power of signals A and B in watts, but we do know that the power ratio is <em class="calibre7">P</em><sub class="calibre12">A</sub>/<em class="calibre7">P</em><sub class="calibre12">B</sub> = 4.</p>
+<p class="caption"><a id="calibre_link-447"></a><strong class="calibre9">Table E-1</strong> Some Useful Logarithmic Relationships</p>
+<p class="image"><img src="images/001010.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3"><a id="calibre_link-731"></a></p>
+<h3 class="calibre6">E.3 Absolute Power Using Decibels</h3>
+<p class="calibre3">Let’s discuss another use of decibels that the reader may encounter in the literature. It’s convenient for practitioners in the electronic communications field to measure continuous signal-power levels referenced to a specific absolute power level. In this way, they can speak of absolute power levels in watts while taking advantage of the convenience of decibels. The most common absolute power reference level used is the milliwatt. For example, if <em class="calibre7">P</em><sub class="calibre12">2</sub> in <a href="#calibre_link-438">Eq. (E-2)</a> is a reference power level of one milliwatt, then</p>
+<p class="caption"><a id="calibre_link-448"></a>(E-10)</p>
+<p class="image"><img src="images/001060.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3"><a id="calibre_link-2099"></a>The dBm unit of measure in <a href="#calibre_link-448">Eq. (E-10)</a> is read as “dB relative to a milliwatt.” Thus, if a continuous signal is specified as having a power of 3 dBm, we know that the signal’s absolute power level is 2 times one milliwatt, or 2 milliwatts. Likewise, a &ndash;10 dBm signal has an absolute power of 0.1 milliwatts.<sup class="calibre10"><a id="calibre_link-450"></a><a href="#calibre_link-449">†</a></sup></p>
+<p class="footnotes"><a id="calibre_link-449"></a><sup class="calibre11"><a href="#calibre_link-450">†</a></sup> Other absolute reference power levels can be used. People involved with high-power transmitters sometimes use a single watt as their reference power level. Their unit of power using decibels is the dBW, read as “dB relative to a watt.” In this case, for example, 3 dBW is equal to a 2-watt power level.</p>
+<p class="calibre3">The reader should take care not to inadvertently use dB and dBm interchangeably. They mean very different things. Again, dB is a relative power level relationship, and dBm is an absolute power level in milliwatts.</p>
+</div>
+
+
+</body></html>

@@ -1,0 +1,233 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><link href="style_edited.css" rel="stylesheet" type="text/css" /><title>Understanding Digital Signal Processing</title>
+<style type="text/css">
+body {
+  -webkit-text-size-adjust: 260%; /* text */
+  zoom: 1.7; /* graphics */
+  font-family: "BookerlyLCD";
+}
+a {
+  color: #005090;
+  text-decoration: none;
+}
+a {font-variant-numeric: oldstyle-nums proportional-nums;}
+p.caption {font-variant-numeric: oldstyle-nums proportional-nums;}
+</style>
+</head><body>
+
+
+<div class="calibre" id="calibre_link-572">
+<p class="calibre3"><a id="calibre_link-2482"></a></p>
+<h2 class="calibre8"><a id="calibre_link-2483" class="calibre5"></a>Contents</h2>
+<p class="toc-appendix"><a id="calibre_link-2489"></a><strong class="calibre9"><a href="#calibre_link-720">A THE ARITHMETIC OF COMPLEX NUMBERS</a></strong></p>
+<p class="toc-section"><a href="#calibre_link-721">A.1 Graphical Representation of Real and Complex Numbers</a></p>
+<p class="toc-section"><a href="#calibre_link-722">A.2 Arithmetic Representation of Complex Numbers</a></p>
+<p class="toc-section"><a href="#calibre_link-723">A.3 Arithmetic Operations of Complex Numbers</a></p>
+<p class="toc-section"><a href="#calibre_link-724">A.4 Some Practical Implications of Using Complex Numbers</a></p>
+
+</div>
+
+
+<div class="calibre" id="calibre_link-720">
+<p class="calibre3"><a id="calibre_link-293"></a></p>
+<h2 class="calibre8"><a id="calibre_link-2075" class="calibre5"></a>A The Arithmetic of Complex Numbers</h2>
+<p class="calibre3">To understand digital signal processing, we have to get comfortable using complex numbers. The first step toward this goal is learning to manipulate complex numbers arithmetically. Fortunately, we can take advantage of our knowledge of real numbers to make this job easier. Although the physical significance of complex numbers is discussed in <a href="#calibre_link-235">Chapter 8</a>, the following discussion provides the arithmetic rules governing complex numbers.</p>
+<p class="calibre3"><a id="calibre_link-721"></a></p>
+<h3 class="calibre6">A.1 Graphical Representation of Real and Complex Numbers</h3>
+<p class="calibre3">To get started, real numbers are those positive or negative numbers we’re used to thinking about in our daily lives. Examples of real numbers are 0.3, &ndash;2.2, 5.1, etc. Keeping this in mind, we see how a real number can be represented by a point on a one-dimensional axis, called the <em class="calibre7">real</em> axis, as shown in <a href="#calibre_link-1213">Figure A-1</a>.</p>
+<p class="caption"><a id="calibre_link-1213"></a><strong class="calibre9">Figure A-1</strong> The representation of a real number as a point on the one-dimensional real axis.</p>
+<p class="image"><img src="images/001770.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">We can, in fact, consider that all real numbers correspond to all of the points on the real axis line on a one-to-one basis.</p>
+<p class="calibre3">A complex number, unlike a real number, has two parts: a real part and an imaginary part. Just as a real number can be considered to be a point on <a id="calibre_link-1985"></a>the one-dimensional real axis, a complex number can be treated as a point on a complex plane as shown in <a href="#calibre_link-1214">Figure A-2</a>. We’ll use this geometrical concept to help us understand the arithmetic of complex numbers.<sup class="calibre10"><a id="calibre_link-1216"></a><a href="#calibre_link-1215">†</a></sup></p>
+<p class="footnotes"><a id="calibre_link-1215"></a><sup class="calibre11"><a href="#calibre_link-1216">†</a></sup> The complex plane representation of a complex number is sometimes called an <em class="calibre7">Argand diagram</em>&mdash;named after the French mathematician Jean Robert Argand (1768&ndash;1825).</p>
+<p class="caption"><a id="calibre_link-1214"></a><strong class="calibre9">Figure A-2</strong> The phasor representation of the complex number <em class="calibre7">C</em> = <em class="calibre7">R</em> + <em class="calibre7">jI</em> on the complex plane.</p>
+<p class="image"><img src="images/000793.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3"><a id="calibre_link-722"></a></p>
+<h3 class="calibre6">A.2 Arithmetic Representation of Complex Numbers</h3>
+<p class="calibre3">A complex number <em class="calibre7">C</em> is represented in a number of different ways in the literature, such as</p>
+<p class="caption"><a id="calibre_link-1223"></a>(A-1)</p>
+<p class="image"><img src="images/001420.jpg" alt="image" class="calibre2" /></p>
+<p class="caption"><a id="calibre_link-3435"></a>(A-1′)</p>
+<p class="image"><img src="images/000784.jpg" alt="image" class="calibre2" /></p>
+<p class="caption"><a id="calibre_link-1217"></a>(A-1″)</p>
+<p class="image"><img src="images/001638.jpg" alt="image" class="calibre2" /></p>
+<p class="caption"><a id="calibre_link-1218"></a>(A-1′′′)</p>
+<p class="image"><img src="images/000668.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3"><a href="#calibre_link-1217">Equations (A-1″)</a> and <a href="#calibre_link-1218">(A-1′′′)</a> remind us that the complex number <em class="calibre7">C</em> can also be considered the tip of a phasor on the complex plane, with magnitude <em class="calibre7">M</em>, in the direction of ø degrees relative to the positive real axis as shown in <a href="#calibre_link-1214">Figure A-2</a>. (We’ll avoid calling phasor <em class="calibre7">M</em> a vector because the term <em class="calibre7">vector</em> means different things in different contexts. In linear algebra, <em class="calibre7">vector</em> is the term used to signify a one-dimensional matrix. On the other hand, in mechanical engineering and field theory, vectors are used to signify magnitudes and directions, but there are vector operations (<em class="calibre7">scalar</em> or <em class="calibre7">dot product</em>, and <em class="calibre7">vector</em> or <em class="calibre7">cross-product</em>) that don’t apply to our definition of a phasor. The relationships between the variables in this figure follow the standard trigonometry of right triangles. Keep in mind that <em class="calibre7">C</em> is a complex number, and the variables <em class="calibre7">R</em>, <em class="calibre7">I</em>, <em class="calibre7">M</em>, and ø are all real numbers. The magnitude of <em class="calibre7">C</em>, sometimes called the <em class="calibre7">modulus</em> of <em class="calibre7">C</em>, is</p>
+<p class="caption"><a id="calibre_link-3436"></a><a id="calibre_link-3437"></a>(A-2)</p>
+<p class="image"><img src="images/001519.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">and, by definition, the phase angle, or <em class="calibre7">argument</em>, of <em class="calibre7">C</em> is the arctangent of <em class="calibre7">I</em>/<em class="calibre7">R</em>, or</p>
+<p class="caption"><a id="calibre_link-1219"></a>(A-3)</p>
+<p class="image"><img src="images/000554.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">The variable ø in <a href="#calibre_link-1219">Eq. (A-3)</a> is a general angle term. It can have dimensions of degrees or radians. Of course, we can convert back and forth between degrees and radians using π radians = 180°. So, if ø<em class="calibre7"><sub class="calibre12">r</sub></em> is in radians and ø<em class="calibre7"><sub class="calibre12">d</sub></em> is in degrees, then we can convert ø<em class="calibre7"><sub class="calibre12">r</sub></em> to degrees by the expression</p>
+<p class="caption"><a id="calibre_link-3438"></a>(A-4)</p>
+<p class="image"><img src="images/001413.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Likewise, we can convert ø<em class="calibre7"><sub class="calibre12">d</sub></em> to radians by the expression</p>
+<p class="caption"><a id="calibre_link-3439"></a>(A-5)</p>
+<p class="image"><img src="images/000451.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">The exponential form of a complex number has an interesting characteristic that we need to keep in mind. Whereas only a single expression in rectangular form can describe a single complex number, an infinite number of exponential expressions can describe a single complex number; that is, while, in the exponential form, a complex number <em class="calibre7">C</em> can be represented by <em class="calibre7">C</em>= <em class="calibre7">Me<sup class="calibre10">j</sup></em><sup class="calibre10">ø</sup>, it can also be represented by</p>
+<p class="caption"><a id="calibre_link-1220"></a>(A-6)</p>
+<p class="image"><img src="images/001307.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">where <em class="calibre7">n</em> = ±1, ±2, ±3, . . . and ø is in radians. When ø is in degrees, <a href="#calibre_link-1220">Eq. (A-6)</a> is in the form</p>
+<p class="caption"><a id="calibre_link-1221"></a>(A-7)</p>
+<p class="image"><img src="images/000340.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3"><a href="#calibre_link-1220">Equations (A-6)</a> and <a href="#calibre_link-1221">(A-7)</a> are <em class="calibre7">almost</em> self-explanatory. They indicate that the point on the complex plane represented by the tip of the phasor <em class="calibre7">C</em> remains unchanged if we rotate the phasor some integral multiple of 2π radians or an integral multiple of 360°. So, for example, if <em class="calibre7">C</em> = <em class="calibre7">Me<sup class="calibre10">j</sup></em><sup class="calibre10">(20°)</sup>, then</p>
+<p class="caption"><a id="calibre_link-3440"></a>(A-8)</p>
+<p class="image"><img src="images/001472.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">The variable ø, the angle of the phasor in <a href="#calibre_link-1214">Figure A-2</a>, need not be constant. We’ll often encounter expressions containing a complex sinusoid that takes the form</p>
+<p class="caption"><a id="calibre_link-1222"></a>(A-9)</p>
+<p class="image"><img src="images/000227.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3"><a id="calibre_link-1958"></a><a href="#calibre_link-1222">Equation (A-9)</a> represents a phasor of magnitude <em class="calibre7">M</em> whose angle in <a href="#calibre_link-1214">Figure A-2</a> is increasing linearly with time at a rate of ω radians each second. If ω = 2π, the phasor described by <a href="#calibre_link-1222">Eq. (A-9)</a> is rotating counterclockwise at a rate of 2π radians per second&mdash;one revolution per second&mdash;and that’s why ω is called the radian frequency. In terms of frequency, <a href="#calibre_link-1222">Eq. (A-9)</a>’s phasor is rotating counterclockwise at ω = 2π<em class="calibre7">f</em> radians per second, where <em class="calibre7">f</em> is the cyclic frequency in cycles per second (Hz). If the cyclic frequency is <em class="calibre7">f</em> = 10 Hz, the phasor is rotating at 20π radians per second. Likewise, the expression</p>
+<p class="caption"><a id="calibre_link-3441"></a>(A-9′)</p>
+<p class="image"><img src="images/001070.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">represents a phasor of magnitude <em class="calibre7">M</em> that rotates in a clockwise direction about the origin of the complex plane at a negative radian frequency of &ndash;ω radians per second.</p>
+<p class="calibre3"><a id="calibre_link-723"></a></p>
+<h3 class="calibre6">A.3 Arithmetic Operations of Complex Numbers</h3>
+<p class="calibre3"><a id="calibre_link-3442"></a></p>
+<h4 class="calibre13">A.3.1 Addition and Subtraction of Complex Numbers</h4>
+<p class="calibre3">Which of the above forms for <em class="calibre7">C</em> in <a href="#calibre_link-1223">Eq. (A-1)</a> is the best to use? It depends on the arithmetic operation we want to perform. For example, if we’re adding two complex numbers, the rectangular form in <a href="#calibre_link-1223">Eq. (A-1)</a> is the easiest to use. The addition of two complex numbers, <em class="calibre7">C</em><sub class="calibre12">1</sub> = <em class="calibre7">R</em><sub class="calibre12">1</sub> + <em class="calibre7">jI</em><sub class="calibre12">1</sub> and <em class="calibre7">C</em><sub class="calibre12">2</sub> = <em class="calibre7">R</em><sub class="calibre12">2</sub> + <em class="calibre7">jI</em><sub class="calibre12">2</sub>, is merely the sum of the real parts plus <em class="calibre7">j</em> times the sum of the imaginary parts as</p>
+<p class="caption"><a id="calibre_link-3443"></a>(A-10)</p>
+<p class="image"><img src="images/000126.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3"><a href="#calibre_link-1224">Figure A-3</a> is a graphical depiction of the sum of two complex numbers using the concept of phasors. Here the sum phasor <em class="calibre7">C</em><sub class="calibre12">1</sub> + <em class="calibre7">C</em><sub class="calibre12">2</sub> in <a href="#calibre_link-1224">Figure A-3(a)</a> is the new phasor from the beginning of phasor <em class="calibre7">C</em><sub class="calibre12">1</sub> to the end of phasor <em class="calibre7">C</em><sub class="calibre12">2</sub> in <a href="#calibre_link-1224">Figure A-3(b)</a>. Remember, the <em class="calibre7">R</em>s and the <em class="calibre7">I</em>s can be either positive or negative numbers. Subtracting one complex number from the other is straightforward as long as we find the differences between the two real parts and the two imaginary parts separately. Thus</p>
+<p class="caption"><a id="calibre_link-3444"></a>(A-11)</p>
+<p class="image"><img src="images/000963.jpg" alt="image" class="calibre2" /></p>
+<p class="caption"><a id="calibre_link-1224"></a><strong class="calibre9">Figure A-3</strong> Geometrical representation of the sum of two complex numbers.</p>
+<p class="image"><img src="images/001236.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">An example of complex number addition is discussed in <a href="#calibre_link-462">Section 11.3</a>, where we covered the topic of averaging fast Fourier transform outputs.</p>
+<p class="calibre3"><a id="calibre_link-3445"></a></p>
+<h4 class="calibre13">A.3.2 Multiplication of Complex Numbers</h4>
+<p class="calibre3">We can use the rectangular form to multiply two complex numbers as</p>
+<p class="caption"><a id="calibre_link-3446"></a>(A-12)</p>
+<p class="image"><img src="images/000710.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3"><a id="calibre_link-2080"></a>However, if we represent the two complex numbers in exponential form, their product takes the simpler form</p>
+<p class="caption"><a id="calibre_link-1225"></a>(A-13)</p>
+<p class="image"><img src="images/001257.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">because multiplication results in the addition of the exponents. Of some interest is the fact that the product of the magnitudes of two complex numbers is equal to the magnitude of their product. That is,</p>
+<p class="caption"><a id="calibre_link-3447"></a>(A-13′)</p>
+<p class="image"><img src="images/001713.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">As a special case of multiplication of two complex numbers, <em class="calibre7">scaling</em> is multiplying a complex number by another complex number whose imaginary part is zero. We can use the rectangular or exponential forms with equal ease as follows:</p>
+<p class="caption"><a id="calibre_link-3448"></a>(A-14)</p>
+<p class="image"><img src="images/000737.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">or in exponential form,</p>
+<p class="caption"><a id="calibre_link-3449"></a>(A-15)</p>
+<p class="image"><img src="images/001591.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3"><a id="calibre_link-3450"></a></p>
+<h4 class="calibre13">A.3.3 Conjugation of a Complex Number</h4>
+<p class="calibre3">The complex conjugate of a complex number is obtained merely by changing the sign of the number’s imaginary part. So, if we denote <em class="calibre7">C</em><sup class="calibre10">*</sup> as the complex conjugate of the number <em class="calibre7">C</em> = <em class="calibre7">R</em> + <em class="calibre7">jI</em> = <em class="calibre7">Me<sup class="calibre10">j</sup></em><sup class="calibre10">ø</sup>, then <em class="calibre7">C</em><sup class="calibre10">*</sup> is expressed as</p>
+<p class="caption"><a id="calibre_link-3451"></a>(A-16)</p>
+<p class="image"><img src="images/000618.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3"><a id="calibre_link-3452"></a>There are three characteristics of conjugates that occasionally come in handy. First, the conjugate of a product is equal to the product of the conjugates. That is, if <em class="calibre7">C</em> = <em class="calibre7">C</em><sub class="calibre12">1</sub><em class="calibre7">C</em><sub class="calibre12">2</sub>, then from <a href="#calibre_link-1225">Eq. (A-13)</a></p>
+<p class="caption"><a id="calibre_link-3453"></a>(A-17)</p>
+<p class="image"><img src="images/001478.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Second, the sum of conjugates of two complex numbers is equal to the conjugate of the sum. We can show this in rectangular form as</p>
+<p class="caption"><a id="calibre_link-3454"></a>(A-17′)</p>
+<p class="image"><img src="images/001055.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Third, the product of a complex number and its conjugate is the complex number’s magnitude squared. It’s easy to prove this in exponential form as</p>
+<p class="caption"><a id="calibre_link-3455"></a>(A-18)</p>
+<p class="image"><img src="images/000427.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">(This property is often used in digital signal processing to determine the relative power of a complex sinusoidal phasor represented by <em class="calibre7">Me</em><sup class="calibre10"><em class="calibre7">j</em>ω<em class="calibre7">t</em></sup>.)</p>
+<p class="calibre3"><a id="calibre_link-3456"></a></p>
+<h4 class="calibre13">A.3.4 Division of Complex Numbers</h4>
+<p class="calibre3">The division of two complex numbers is also convenient using the exponential and magnitude and angle forms, such as</p>
+<p class="caption"><a id="calibre_link-3457"></a>(A-19)</p>
+<p class="image"><img src="images/000084.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">and</p>
+<p class="caption"><a id="calibre_link-3458"></a>(A-19′)</p>
+<p class="image"><img src="images/001687.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Although not nearly so handy, we can perform complex division in rectangular notation by multiplying the numerator and the denominator by the complex conjugate of the denominator as</p>
+<p class="caption"><a id="calibre_link-1227"></a>(A-20)</p>
+<p class="image"><img src="images/000836.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3"><a id="calibre_link-3459"></a></p>
+<h4 class="calibre13"><a id="calibre_link-2077"></a>A.3.5 Inverse of a Complex Number</h4>
+<p class="calibre3">A special form of division is the inverse, or reciprocal, of a complex number. If <em class="calibre7">C</em> = <em class="calibre7">Me</em><sup class="calibre10"><em class="calibre7">j</em>ø</sup>, its inverse is given by</p>
+<p class="caption"><a id="calibre_link-3460"></a>(A-21)</p>
+<p class="image"><img src="images/001118.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">In rectangular form, the inverse of <em class="calibre7">C</em> = <em class="calibre7">R</em> + <em class="calibre7">jI</em> is given by</p>
+<p class="caption"><a id="calibre_link-1226"></a>(A-22)</p>
+<p class="image"><img src="images/001759.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">We obtain <a href="#calibre_link-1226">Eq. (A-22)</a> by substituting <em class="calibre7">R</em><sub class="calibre12">1</sub> = 1, <em class="calibre7">I</em><sub class="calibre12">1</sub> = 0, <em class="calibre7">R</em><sub class="calibre12">2</sub> = <em class="calibre7">R</em>, and <em class="calibre7">I</em><sub class="calibre12">2</sub> = <em class="calibre7">I</em> in <a href="#calibre_link-1227">Eq. (A-20)</a>.</p>
+<p class="calibre3"><a id="calibre_link-3461"></a></p>
+<h4 class="calibre13">A.3.6 Complex Numbers Raised to a Power</h4>
+<p class="calibre3">Raising a complex number to some power is easily done in the exponential form. If <em class="calibre7">C</em> = <em class="calibre7">Me<sup class="calibre10">j</sup></em><sup class="calibre10">ø</sup>, then</p>
+<p class="caption"><a id="calibre_link-3462"></a>(A-23)</p>
+<p class="image"><img src="images/001572.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">For example, if <em class="calibre7">C</em> = 3<em class="calibre7">e</em><sup class="calibre10"><em class="calibre7">j</em>125°</sup>, then <em class="calibre7">C</em> cubed is</p>
+<p class="caption"><a id="calibre_link-3463"></a>(A-24)</p>
+<p class="image"><img src="images/000597.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">We conclude this appendix with four complex arithmetic operations that are not very common in digital signal processing&mdash;but you may need them sometime.</p>
+<p class="calibre3"><a id="calibre_link-3464"></a></p>
+<h4 class="calibre13">A.3.7 Roots of a Complex Number</h4>
+<p class="calibre3">The <em class="calibre7">k</em>th root of a complex number <em class="calibre7">C</em> is the number that, multiplied by itself <em class="calibre7">k</em> times, results in <em class="calibre7">C</em>. The exponential form of <em class="calibre7">C</em> is the best way to explore this process. When a complex number is represented by <em class="calibre7">C</em> = <em class="calibre7">Me<sup class="calibre10">j</sup></em><sup class="calibre10">ø</sup>, remember that it can also be represented by</p>
+<p class="caption"><a id="calibre_link-1228"></a>(A-25)</p>
+<p class="image"><img src="images/001717.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">In this case, the variable ø in <a href="#calibre_link-1228">Eq. (A-25)</a> is in degrees. There are <em class="calibre7">k</em> distinct roots when we’re finding the <em class="calibre7">k</em>th root of <em class="calibre7">C</em>. By “distinct,” we mean roots whose exponents are less than 360°. We find those roots by using the following:</p>
+<p class="caption"><a id="calibre_link-1229"></a>(A-26)</p>
+<p class="image"><img src="images/000072.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3"><a id="calibre_link-2365"></a>Next, we assign the values 0, 1, 2, 3, . . ., <em class="calibre7">k&ndash;</em>1 to <em class="calibre7">n</em> in <a href="#calibre_link-1229">Eq. (A-26)</a> to get the <em class="calibre7">k</em> roots of <em class="calibre7">C</em>. OK, we need an example here! Let’s say we’re looking for the cube (third) root of <em class="calibre7">C</em> = 125<em class="calibre7">e</em><sup class="calibre10"><em class="calibre7">j</em>(75°)</sup>. We proceed as follows:</p>
+<p class="caption"><a id="calibre_link-1230"></a>(A-27)</p>
+<p class="image"><img src="images/000333.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Next we assign the values <em class="calibre7">n</em> = 0, <em class="calibre7">n</em> = 1, and <em class="calibre7">n</em> = 2 to <a href="#calibre_link-1230">Eq. (A-27)</a> to get the three roots of <em class="calibre7">C</em>. So the three distinct roots are</p>
+<p class="image"><img src="images/001245.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">and</p>
+<p class="image"><img src="images/000285.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3"><a id="calibre_link-3465"></a></p>
+<h4 class="calibre13">A.3.8 Natural Logarithms of a Complex Number</h4>
+<p class="calibre3">Taking the natural logarithm of a complex number <em class="calibre7">C</em> = <em class="calibre7">Me<sup class="calibre10">j</sup></em><sup class="calibre10">ø</sup> is straightforward using exponential notation; that is,</p>
+<p class="caption"><a id="calibre_link-3466"></a>(A-28)</p>
+<p class="image"><img src="images/001501.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">where 0 ≤ ø &lt; 2π. By way of example, if <em class="calibre7">C</em> = 12<em class="calibre7">e</em><sup class="calibre10"><em class="calibre7">j</em>π/4</sup>, the natural logarithm of <em class="calibre7">C</em> is</p>
+<p class="caption"><a id="calibre_link-3467"></a>(A-29)</p>
+<p class="image"><img src="images/000696.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">This means that <em class="calibre7">e</em><sup class="calibre10">(2.485 + <em class="calibre7">j</em>0.785)</sup> = <em class="calibre7">e</em><sup class="calibre10">2.485</sup> · <em class="calibre7">e</em><sup class="calibre10"><em class="calibre7">j</em>0.785</sup> = 12<em class="calibre7">e</em><sup class="calibre10"><em class="calibre7">j</em>π/4</sup>.</p>
+<p class="calibre3">Before leaving this topic of the natural logarithm of complex numbers, we remind the reader that <em class="calibre7">e</em><sup class="calibre10"><em class="calibre7">j</em>π</sup> = &ndash;1, which allows us to write</p>
+<p class="caption"><a id="calibre_link-3468"></a>(A-30)</p>
+<p class="image"><img src="images/001338.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">showing how the natural logarithm of a negative real number is defined.</p>
+<p class="calibre3">As an interesting aside, rearranging the <em class="calibre7">e</em><sup class="calibre10"><em class="calibre7">j</em>π</sup> = &ndash;1 expression enables us to write what many mathematicians call “the most beautiful formula in mathematics.” That equation is</p>
+<p class="caption"><a id="calibre_link-1231"></a>(A-31)</p>
+<p class="image"><img src="images/000155.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3"><a href="#calibre_link-1231">Equation (A-31)</a> is famous because the natural constants <em class="calibre7">e</em>, π, 0, and 1, along with the fundamental operations of addition, multiplication, exponentiation, the “<em class="calibre7">j</em>” operator, and equality, all appear exactly once!</p>
+<p class="calibre3"><a id="calibre_link-3469"></a></p>
+<h4 class="calibre13"><a id="calibre_link-3470"></a>A.3.9 Logarithm to the Base 10 of a Complex Number</h4>
+<p class="calibre3">We can calculate the base 10 logarithm of the complex number <em class="calibre7">C</em> = <em class="calibre7">Me</em><sup class="calibre10"><em class="calibre7">j</em>ø</sup> using</p>
+<p class="caption"><a id="calibre_link-1232"></a>(A-32)</p>
+<p class="image"><img src="images/000773.jpg" alt="image" class="calibre2" /></p>
+<p class="footnotes"><a id="calibre_link-3471"></a><sup class="calibre11">†</sup> For the second term of the result in <a href="#calibre_link-1232">Eq. (A-32)</a> we used log<em class="calibre7"><sub class="calibre14">a</sub></em>(<em class="calibre7">x<sup class="calibre11">n</sup></em>) = <em class="calibre7">n</em>·<em class="calibre7">lo</em>g<em class="calibre7"><sub class="calibre14">a</sub>x</em> according to the law of logarithms.</p>
+<p class="calibre3">Of course <em class="calibre7">e</em> is the irrational number, approximately equal to 2.71828, whose log to the base 10 is approximately 0.43429. Keeping this in mind, we can simplify <a href="#calibre_link-1232">Eq. (A-32)</a> as</p>
+<p class="caption"><a id="calibre_link-1233"></a>(A-32′)</p>
+<p class="image"><img src="images/001014.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Repeating the above example with <em class="calibre7">C</em> = 12<em class="calibre7">e</em><sup class="calibre10"><em class="calibre7">j</em>π/4</sup> and using the <a href="#calibre_link-1233">Eq. (A-32′)</a> approximation, the base 10 logarithm of <em class="calibre7">C</em> is</p>
+<p class="caption"><a id="calibre_link-1234"></a>(A-33)</p>
+<p class="image"><img src="images/000063.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">The result from <a href="#calibre_link-1234">Eq. (A-33)</a> means that</p>
+<p class="caption"><a id="calibre_link-3472"></a>(A-33′)</p>
+<p class="image"><img src="images/000550.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3"><a id="calibre_link-3473"></a></p>
+<h4 class="calibre13">A.3.10 Log to the Base 10 of a Complex Number Using Natural Logarithms</h4>
+<p class="calibre3">Unfortunately, some software mathematics packages have no base 10 logarithmic function and can calculate only natural logarithms. In this situation, we just use</p>
+<p class="caption"><a id="calibre_link-3474"></a>(A-34)</p>
+<p class="image"><img src="images/001467.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">to calculate the base 10 logarithm of <em class="calibre7">x</em>. Using this <em class="calibre7">change of base</em> formula, we can find the base 10 logarithm of a complex number <em class="calibre7">C</em> = <em class="calibre7">Me</em><sup class="calibre10"><em class="calibre7">j</em>ø</sup>; that is,</p>
+<p class="caption"><a id="calibre_link-1235"></a>(A-35)</p>
+<p class="image"><img src="images/000291.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Because log<sub class="calibre12">10</sub>(<em class="calibre7">e</em>) is approximately equal to 0.43429, we use <a href="#calibre_link-1235">Eq. (A-35)</a> to state that</p>
+<p class="caption"><a id="calibre_link-1236"></a>(A-36)</p>
+<p class="image"><img src="images/001647.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3"><a id="calibre_link-2076"></a>Repeating, again, the example above of <em class="calibre7">C</em> = 12<em class="calibre7">e</em><sup class="calibre10"><em class="calibre7">j</em>π/4</sup>, the <a href="#calibre_link-1236">Eq. (A-36)</a> approximation allows us to take the base 10 logarithm of <em class="calibre7">C</em> using natural logs as</p>
+<p class="caption"><a id="calibre_link-3475"></a>(A-37)</p>
+<p class="image"><img src="images/001542.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">giving us the same result as <a href="#calibre_link-1232">Eq. (A-32)</a>.</p>
+<p class="calibre3"><a id="calibre_link-724"></a></p>
+<h3 class="calibre6">A.4 Some Practical Implications of Using Complex Numbers</h3>
+<p class="calibre3">At the beginning of <a href="#calibre_link-723">Section A.3</a>, we said that the choice of using the rectangular versus the polar form of representing complex numbers depends on the type of arithmetic operations we intend to perform. It’s interesting to note that the rectangular form has a practical advantage over the polar form when we consider how numbers are represented in a computer. For example, let’s say we must represent our complex numbers using a four-bit sign-magnitude binary number format. This means that we can have integral numbers ranging from &ndash;7 to +7, and our range of complex numbers covers a square on the complex plane as shown in <a href="#calibre_link-1237">Figure A-4(a)</a> when we use the rectangular form. On the other hand, if we used four-bit numbers to represent the magnitude of a complex number in polar form, those numbers must reside on or within a circle whose radius is 7 as shown in <a href="#calibre_link-1237">Figure A-4(b)</a>. Notice how the four shaded corners in <a href="#calibre_link-1237">Figure A-4(b)</a> represent locations of valid complex values using the rectangular form but are <em class="calibre7">out of bounds</em> if we use the polar form. Put another way, a complex number calculation, yielding an acceptable result in rectangular form, could result in an overflow error if we use polar notation in <a id="calibre_link-3476"></a>our computer. We could accommodate the complex value 7 + <em class="calibre7">j</em>7 in rectangular form but not its polar equivalent, because the magnitude of that polar number is greater than 7.</p>
+<p class="caption"><a id="calibre_link-1237"></a><strong class="calibre9">Figure A-4</strong> Complex integral numbers represented as points on the complex plane using a four-bit sign-magnitude data format: (a) using rectangular notation; (b) using polar notation.</p>
+<p class="image"><img src="images/000676.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Although we avoid any further discussion here of the practical implications of performing complex arithmetic using standard digital data formats, it is an intricate and interesting subject. To explore this topic further, the inquisitive reader is encouraged to start with the references.</p>
+<p class="calibre3"><a id="calibre_link-3477"></a></p>
+<h3 class="calibre6">References</h3>
+<p class="chapterendnote"><a id="calibre_link-3478"></a>[1] Plauger, P. J. “Complex Math Functions,” <em class="calibre7">Embedded Systems Programming,</em> August 1994.</p>
+<p class="chapterendnote"><a id="calibre_link-3479"></a>[2] Kahan, W. “Branch Cuts for Complex Elementary Functions, or Much Ado About Nothing’s Sign Bit,” <em class="calibre7">Proceedings of the Joint IMA/SIAM Conference on the State of the Art in Numerical Analysis,</em> Clarendon Press, 1987.</p>
+<p class="chapterendnote"><a id="calibre_link-3480"></a>[3] Plauger, P. J. “Complex Made Simple,” <em class="calibre7">Embedded Systems Programming,</em> July 1994.</p>
+</div>
+
+
+</body></html>

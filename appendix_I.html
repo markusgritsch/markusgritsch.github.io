@@ -1,0 +1,74 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><link href="style_edited.css" rel="stylesheet" type="text/css" /><title>Understanding Digital Signal Processing</title>
+<style type="text/css">
+body {
+  -webkit-text-size-adjust: 260%; /* text */
+  zoom: 1.7; /* graphics */
+  font-family: "BookerlyLCD";
+}
+a {
+  color: #005090;
+  text-decoration: none;
+}
+a {font-variant-numeric: oldstyle-nums proportional-nums;}
+p.caption {font-variant-numeric: oldstyle-nums proportional-nums;}
+</style>
+</head><body>
+
+
+<div class="calibre" id="calibre_link-572">
+<p class="calibre3"><a id="calibre_link-2482"></a></p>
+<h2 class="calibre8"><a id="calibre_link-2483" class="calibre5"></a>Contents</h2>
+<p class="toc-appendix"><strong class="calibre9"><a href="#calibre_link-0">I COMPUTING CHEBYSHEV WINDOW SEQUENCES</a></strong></p>
+<p class="toc-section"><a href="#calibre_link-738">I.1 Chebyshev Windows for FIR Filter Design</a></p>
+<p class="toc-section"><a href="#calibre_link-739">I.2 Chebyshev Windows for Spectrum Analysis</a></p>
+
+</div>
+
+
+<div class="calibre" id="calibre_link-0">
+<p class="calibre3"><a id="calibre_link-299"></a></p>
+<h2 class="calibre8"><a id="calibre_link-2052" class="calibre5"></a>I Computing Chebyshev Window Sequences</h2>
+<p class="calibre3">Because detailed methods for computing Chebyshev window functions are not readily available in the literature of DSP, here we provide the steps for computing these useful window sequences.</p>
+<p class="calibre3">Below we provide methods for computing two types of Chebyshev window sequences. The first window type yields symmetric window sequences, in which their first and last samples are equal. That type of window is used in the Window Design Method of tapped-delay line FIR filter design.</p>
+<p class="calibre3">The second Chebyshev window computation method produces nonsymmetric window sequences, in which their first and last samples are not equal. That type of window is used for spectral leakage reduction in spectrum analysis applications. (This nonsymmetric type of window has a Fourier transform that is real-only.) I thank DSP guru Prof. Fredric J. Harris, San Diego State University, for his personal guidance enabling the creation of the following procedures.</p>
+<p class="calibre3"><a id="calibre_link-738"></a></p>
+<h3 class="calibre6">I.1 Chebyshev Windows for FIR Filter Design</h3>
+<p class="calibre3">Symmetric Chebyshev window sequences, used in the Window Design Method of tapped-delay line FIR filters, are computed as follows:</p>
+<p class="indenthangingn1"><strong class="calibre9">1.</strong> Given a desired Chebyshev window sequence length of <em class="calibre7">N</em>, where <em class="calibre7">N</em> is an odd integer, define integer <em class="calibre7">M</em> = <em class="calibre7">N</em>&ndash;1.</p>
+<p class="indenthangingn1"><strong class="calibre9">2.</strong> Define the window’s sidelobe-level control parameter as γ. The window’s sidelobe peak levels will be &ndash;20γ dB below the main lobe’s peak level. (For example, if we desire frequency-domain sidelobe levels to be 40 dB below the main lobe’s peak level, then we set γ = 2.)</p>
+<p class="indenthangingn1"><a id="calibre_link-3610"></a><strong class="calibre9">3.</strong> Compute parameter α as</p>
+<p class="caption"><a id="calibre_link-1"></a>(I-1)</p>
+<p class="image"><img src="images/000804.jpg" alt="image" class="calibre2" /></p>
+<p class="indenthangingn1"><strong class="calibre9">4.</strong> Compute the <em class="calibre7">M</em>-length sequence <em class="calibre7">A</em>(<em class="calibre7">m</em>) using</p>
+<p class="caption"><a id="calibre_link-3611"></a>(I-2)</p>
+<p class="image"><img src="images/001663.jpg" alt="image" class="calibre2" /></p>
+<p class="indentpara3">where the index <em class="calibre7">m</em> is 0 ≤ <em class="calibre7">m</em> ≤ (<em class="calibre7">M</em>&ndash;1).</p>
+<p class="indenthangingn1"><strong class="calibre9">5.</strong> For each <em class="calibre7">m</em>, evaluate the <em class="calibre7">M</em>th-degree Chebyshev polynomial whose argument is <em class="calibre7">A</em>(<em class="calibre7">m</em>) to generate a frequency-domain sequence <em class="calibre7">W</em>(<em class="calibre7">m</em>). There are many ways to evaluate Chebyshev polynomials. Due to its simplicity of notation, we suggest the following:</p>
+<p class="caption"><a id="calibre_link-3612"></a>(I-3)</p>
+<p class="image"><img src="images/000942.jpg" alt="image" class="calibre2" /></p>
+<p class="indentpara3">or</p>
+<p class="caption"><a id="calibre_link-3613"></a>(I-4)</p>
+<p class="image"><img src="images/001545.jpg" alt="image" class="calibre2" /></p>
+<p class="indentpara3">depending on whether or not an individual |<em class="calibre7">A</em>(<em class="calibre7">m</em>)| value is greater than unity. In theory the resultant <em class="calibre7">W</em>(<em class="calibre7">m</em>) sequence is real-only, but our software’s computational numerical errors may produce a complex-valued <em class="calibre7">W</em>(<em class="calibre7">m</em>) with very small imaginary parts. Those imaginary parts, if they exist, should be ignored. The above (−1)<em class="calibre7"><sup class="calibre10">m</sup></em> factors are necessary because the frequency-domain index <em class="calibre7">m</em> is never less than zero. Note: If your software does not accommodate complex values, then you can avoid problems by replacing <em class="calibre7">A</em>(<em class="calibre7">m</em>) with |<em class="calibre7">A</em>(<em class="calibre7">m</em>)| in this step.</p>
+<p class="indenthangingn1"><strong class="calibre9">6.</strong> Compute a preliminary time-domain window sequence, <em class="calibre7">w</em>(<em class="calibre7">m</em>), using</p>
+<p class="center"><em class="calibre7">w</em>(<em class="calibre7">m</em>) = <span class="underline">real part</span> of the <em class="calibre7">M</em>-point inverse DFT of <em class="calibre7">W</em>(<em class="calibre7">m</em>).</p>
+<p class="indenthangingn1"><strong class="calibre9">7.</strong> Replace <em class="calibre7">w</em>(0), the first <em class="calibre7">w</em>(<em class="calibre7">m</em>) time sample, with <em class="calibre7">w</em>(0)/2.</p>
+<p class="indenthangingn1"><strong class="calibre9">8.</strong> Append that new <em class="calibre7">w</em>(0) sample value to the end of the <em class="calibre7">M</em>-point <em class="calibre7">w</em>(<em class="calibre7">m</em>) sequence, <em class="calibre7">w</em>(<em class="calibre7">N</em>&ndash;1) = <em class="calibre7">w</em>(0), creating the desired <em class="calibre7">N</em>-length <em class="calibre7">w</em>(<em class="calibre7">k</em>) window sequence where the time index <em class="calibre7">k</em> is 0 ≤ <em class="calibre7">k</em> ≤ (<em class="calibre7">N</em>&ndash;1).</p>
+<p class="indenthangingn1"><strong class="calibre9">9.</strong> Normalize the amplitude of <em class="calibre7">w</em>(<em class="calibre7">k</em>), to obtain a unity peak amplitude, by dividing each sample of <em class="calibre7">w</em>(<em class="calibre7">k</em>) from Step 8 by the maximum sample value in <em class="calibre7">w</em>(<em class="calibre7">k</em>).</p>
+<p class="calibre3">The above procedure seems a bit involved but it’s not really so bad, as the following Chebyshev window design example will show. Assume we need an <em class="calibre7">N</em> = 9-sample Chebyshev window function whose frequency-domain sidelobes are 60 dB below the window’s main lobe level. Given those requirements, <em class="calibre7">N</em> = 9, <em class="calibre7">M</em> = 8, γ = 3, and from <a href="#calibre_link-1">Eq. (I-1)</a></p>
+<p class="center">α = cosh[cosh<sup class="calibre10">&ndash;1</sup>(10<sup class="calibre10">3</sup>)/8] = 1.4863.</p>
+<p class="calibre3"><a id="calibre_link-3614"></a>After the inverse DFT operation in the above Step 6, <em class="calibre7">w</em>(<em class="calibre7">m</em> = 0)/2 = 11.91, thus we set <em class="calibre7">w</em>(<em class="calibre7">k</em> = 0) = <em class="calibre7">w</em>(<em class="calibre7">k</em> = 8) = 11.91. The maximum value of <em class="calibre7">w</em>(<em class="calibre7">k</em>) is 229.6323, so we divide the entire <em class="calibre7">w</em>(<em class="calibre7">k</em>) sequence by that value, yielding our final normalized 9-sample symmetric Chebyshev window sequence listed in the rightmost column of <a href="#calibre_link-2">Table I-1</a>.</p>
+<p class="caption"><a id="calibre_link-2"></a><strong class="calibre9">Table I-1</strong> Nine-Point Symmetric Chebyshev Window Computations</p>
+<p class="image"><img src="images/001743.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3"><a id="calibre_link-739"></a></p>
+<h3 class="calibre6">I.2 Chebyshev Windows for Spectrum Analysis</h3>
+<p class="calibre3">Nonsymmetric Chebyshev window sequences, used for spectral leakage reduction in spectrum analysis applications, are computed using the above steps with the following changes:</p>
+<p class="indenthangingb">• For a <em class="calibre7">Q</em>-length nonsymmetric Chebyshev window sequence, where <em class="calibre7">Q</em> is an even integer, in the above Step 1 set <em class="calibre7">M</em> = <em class="calibre7">Q</em>.</p>
+<p class="indenthangingb">• Skip the above Step 8, retaining the <em class="calibre7">Q</em>-length nonsymmetric <em class="calibre7">w</em>(<em class="calibre7">k</em>) sequence, where the time index <em class="calibre7">k</em> is 0 ≤ <em class="calibre7">k</em> ≤ (<em class="calibre7">Q</em>&ndash;1). Normalize the amplitude of the <em class="calibre7">w</em>(<em class="calibre7">k</em>) sequence as described in the above Step 9.</p>
+<p class="calibre3">If <em class="calibre7">Q</em> = 8, for example, our final γ = 3 normalized 8-sample nonsymmetric Chebyshev window sequence would be the samples listed in the rightmost column of <a href="#calibre_link-3">Table I-2</a>.</p>
+<p class="caption"><a id="calibre_link-3615"></a><a id="calibre_link-3"></a><strong class="calibre9">Table I-2</strong> Eight-Point Nonsymmetric Chebyshev Window Computations</p>
+<p class="image"><img src="images/001169.jpg" alt="image" class="calibre2" /></p>
+</div>
+
+
+</body></html>

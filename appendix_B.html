@@ -1,0 +1,63 @@
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><link href="style_edited.css" rel="stylesheet" type="text/css" /><title>Understanding Digital Signal Processing</title>
+<style type="text/css">
+body {
+  -webkit-text-size-adjust: 260%; /* text */
+  zoom: 1.7; /* graphics */
+  font-family: "BookerlyLCD";
+}
+a {
+  color: #005090;
+  text-decoration: none;
+}
+a {font-variant-numeric: oldstyle-nums proportional-nums;}
+p.caption {font-variant-numeric: oldstyle-nums proportional-nums;}
+</style>
+</head><body>
+
+
+<div class="calibre" id="calibre_link-572">
+<p class="calibre3"><a id="calibre_link-2482"></a></p>
+<h2 class="calibre8"><a id="calibre_link-2483" class="calibre5"></a>Contents</h2>
+<p class="toc-appendix"><strong class="calibre9"><a href="#calibre_link-725">B CLOSED FORM OF A GEOMETRIC SERIES</a></strong></p>
+
+</div>
+
+
+<div class="calibre" id="calibre_link-725">
+<p class="calibre3"><a id="calibre_link-294"></a></p>
+<h2 class="calibre8"><a id="calibre_link-2299" class="calibre5"></a>B Closed Form of a Geometric Series</h2>
+<p class="calibre3">In the literature of digital signal processing, we often encounter geometric series expressions like</p>
+<p class="caption"><a id="calibre_link-1936"></a>(B-1)</p>
+<p class="image"><img src="images/001533.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">or</p>
+<p class="caption"><a id="calibre_link-1937"></a>(B-2)</p>
+<p class="image"><img src="images/000561.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Unfortunately, many authors make a statement like “and we know that” and drop <a href="#calibre_link-1936">Eqs. (B-1)</a> or <a href="#calibre_link-1937">(B-2)</a> on the unsuspecting reader who’s expected to accept these expressions on faith. Assuming that you don’t have a Ph.D. in mathematics, you may wonder exactly what arithmetic sleight of hand allows us to arrive at <a href="#calibre_link-1936">Eqs. (B-1)</a> or <a href="#calibre_link-1937">(B-2)</a>? To answer this question, let’s consider a general expression for a geometric series such as</p>
+<p class="caption"><a id="calibre_link-1938"></a>(B-3)</p>
+<p class="image"><img src="images/000969.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">where <em class="calibre7">n</em>, <em class="calibre7">N</em>, and <em class="calibre7">p</em> are integers and <em class="calibre7">a</em> and <em class="calibre7">r</em> are any constants. Multiplying <a href="#calibre_link-1938">Eq. (B-3)</a> by <em class="calibre7">r</em> gives us</p>
+<p class="caption"><a id="calibre_link-1939"></a>(B-4)</p>
+<p class="image"><img src="images/000783.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3"><a id="calibre_link-3481"></a>Subtracting <a href="#calibre_link-1939">Eq. (B-4)</a> from <a href="#calibre_link-1938">Eq. (B-3)</a> gives the expression</p>
+<p class="center"><em class="calibre7">S</em> &ndash; <em class="calibre7">Sr</em> = <em class="calibre7">S</em>(1 − <em class="calibre7">r</em>) = <em class="calibre7">ar<sup class="calibre10">p</sup></em> &ndash; <em class="calibre7">ar<sup class="calibre10">N</sup></em>,</p>
+<p class="calibre3">or</p>
+<p class="caption"><a id="calibre_link-3482"></a>(B-5)</p>
+<p class="image"><img src="images/001048.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">So here’s what we’re after. The <em class="calibre7">closed form</em> of the series is</p>
+<p class="caption"><a id="calibre_link-1940"></a>(B-6)</p>
+<p class="image"><img src="images/001691.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">(By “closed form,” we mean taking an infinite series and converting it to a simpler mathematical form without the summation.) When <em class="calibre7">a</em> = 1, <a href="#calibre_link-1940">Eq. (B-6)</a> validates <a href="#calibre_link-1936">Eq. (B-1)</a>. We can quickly verify <a href="#calibre_link-1940">Eq. (B-6)</a> with an example. Letting <em class="calibre7">N</em> = 5, <em class="calibre7">p</em> = 0, <em class="calibre7">a</em> = 2, and <em class="calibre7">r</em> = 3, for example, we can create the following list:</p>
+<p class="image"><img src="images/001260.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">Plugging our example <em class="calibre7">N</em>, <em class="calibre7">p</em>, <em class="calibre7">a</em>, and <em class="calibre7">r</em> values into <a href="#calibre_link-1940">Eq. (B-6)</a>,</p>
+<p class="caption"><a id="calibre_link-3483"></a>(B-7)</p>
+<p class="image"><img src="images/000491.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">which equals the sum of the rightmost column in the list above.</p>
+<p class="calibre3"><a id="calibre_link-3484"></a>As a final step, the terms of our earlier <a href="#calibre_link-1937">Eq. (B-2)</a> are in the form of <a href="#calibre_link-1940">Eq. (B-6)</a> as <em class="calibre7">p</em> = 0, <em class="calibre7">a</em> = 1, and <em class="calibre7">r</em> = <em class="calibre7">e</em><sup class="calibre10">&ndash;<em class="calibre7">j</em>2π<em class="calibre7">m</em>/<em class="calibre7">N</em></sup>.<sup class="calibre10"><a id="calibre_link-1942"></a><a href="#calibre_link-1941">†</a></sup> So plugging those terms from <a href="#calibre_link-1937">Eq. (B-2)</a> into <a href="#calibre_link-1940">Eq. (B-6)</a> gives us</p>
+<p class="footnotes"><a id="calibre_link-1941"></a><sup class="calibre11"><a href="#calibre_link-1942">†</a></sup> From the math identity <em class="calibre7">a<sup class="calibre11">xy</sup></em> = (<em class="calibre7">a<sup class="calibre11">x</sup></em>)<em class="calibre7"><sup class="calibre11">y</sup></em>, we can say <em class="calibre7">e</em><sup class="calibre11">&ndash;<em class="calibre7">j</em>2π<em class="calibre7">nm</em>/<em class="calibre7">N</em></sup> = (<em class="calibre7">e</em><sup class="calibre11">&ndash;<em class="calibre7">j</em>2π<em class="calibre7">m</em>/<em class="calibre7">N</em></sup>)<em class="calibre7"><sup class="calibre11">n</sup></em>, s<em class="calibre7">o r = e</em><sup class="calibre11">&ndash;<em class="calibre7">j</em>2π<em class="calibre7">m</em>/<em class="calibre7">N</em></sup>.</p>
+<p class="caption"><a id="calibre_link-3485"></a>(B-8)</p>
+<p class="image"><img src="images/001373.jpg" alt="image" class="calibre2" /></p>
+<p class="calibre3">confirming <a href="#calibre_link-1937">Eq. (B-2)</a>.</p>
+</div>
+
+
+</body></html>
