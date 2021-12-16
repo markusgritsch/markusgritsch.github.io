@@ -18,8 +18,8 @@ folder_name = match.group( 3 )
 content = content.replace( heading, folder_name )
 content = content.replace( common_prefix, '' )
 
-# match = re.search( '<p id="UI_goUp"><a class="up" href="(file:///.*)">In den übergeordneten Ordner wechseln</a></p>', content )
-# content = content.replace( match.group( 1 ), '..' )
+parent_folder_line = '<p id="UI_goUp"><a class="up" href="%s">In den übergeordneten Ordner wechseln</a></p>'
+content = re.sub( parent_folder_line % '(file:///.*)', parent_folder_line % '..', content )
 
 icons_folder = 'icons'
 
