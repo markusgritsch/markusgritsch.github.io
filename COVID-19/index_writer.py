@@ -10,7 +10,6 @@ content = f.read()
 f.close()
 
 match = re.search( '<title>(Index von (file:///.*/(.*)/))</title>', content )
-print match.groups()
 heading = match.group( 1 )
 common_prefix = match.group( 2 ).replace( ' ', '%20' )
 folder_name = match.group( 3 )
@@ -24,7 +23,6 @@ content = re.sub( parent_folder_line % '(file:///.*)', parent_folder_line % '..'
 icons_folder = 'icons'
 
 files_folder = file_path[ : -5 ] + '-Dateien'
-print files_folder
 try:
 	shutil.rmtree( icons_folder )
 except:
@@ -33,6 +31,8 @@ os.rename( files_folder, icons_folder )
 
 files_folder_basename = os.path.basename( files_folder )
 content = content.replace( files_folder_basename.replace( ' ', '%20' ), icons_folder )
+
+content = re.sub( ' <td sortable-data="1icons">.*?</tr><tr>', '', content, flags = re.DOTALL )
 
 f = open( 'index.html', 'wt' )
 f.write( content )
