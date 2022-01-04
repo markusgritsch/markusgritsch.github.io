@@ -3,7 +3,7 @@
 
 import re, os, shutil
 
-file_path = raw_input( 'Drop .html file here and press Return...\n' )[ 1 : -1 ]
+file_path = raw_input( 'Drop .html file here and press Return...\n' ).strip( '" ' )
 
 f = open( file_path, 'rt' )
 content = f.read()
