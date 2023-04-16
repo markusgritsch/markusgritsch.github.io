@@ -119,7 +119,7 @@ input[type="radio"] {
 input:not([type="checkbox"]):not([type="radio"]),
 select {
 	display: block;
-	cursor: pointer;
+	/*cursor: pointer;*/
 }
 input,
 button,
@@ -319,6 +319,13 @@ input[type=file] {
 }
 input[type=file]::file-selector-button {
 	margin: 0 .5rem 0 0;
+}
+input[type=number] {
+	-moz-appearance: textfield;
+}
+input[type=number]:hover,
+input[type=number]:focus {
+	-moz-appearance: auto;
 }
 input[type="color"] {
 	padding: 2px;
