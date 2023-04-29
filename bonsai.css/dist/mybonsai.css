@@ -1318,6 +1318,9 @@ mark {
 	[style*="--sr-xs:"] {
 		grid-row: span var(--sr-xs, 1);
 	}
+	[style*="--gaf-xs:"] {
+		grid-auto-flow: var(--gaf-xs) !important;
+	}
 }
 @media (min-width:640px) {
 	[style*="--col-sm:"] {
